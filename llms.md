@@ -238,6 +238,10 @@ checkpoints along with the weights.
 ### Xiaomi (MiMo)
 
 - 2025-05 · [MiMo: Unlocking the Reasoning Potential of Language Model -- From Pretraining to Posttraining](https://arxiv.org/abs/2505.07608)
+- 2025-06 · [MiMo-VL Technical Report](https://arxiv.org/abs/2506.03569)
+- 2026-01 · [MiMo-V2-Flash Technical Report](https://arxiv.org/abs/2601.02780)
+- 2026-04 · [MiMo-V2.5](https://mimo.xiaomi.com/mimo-v2-5/) *(blog)*
+- 2026-09 · [MiMo-V2.6: Scaling Reinforcement Learning Towards Self-Improvement](https://huggingface.co/XiaomiMiMo/MiMo-V2.6-Pro-RL/blob/main/MiMo_V2_6_technical_report.pdf)
 
 ---
 
