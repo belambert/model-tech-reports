@@ -8,6 +8,7 @@ and world models that simulate or predict environments. See the
 [NVIDIA](#nvidia) ·
 [Meta](#meta) ·
 [Physical Intelligence](#physical-intelligence) ·
+[Xiaomi](#xiaomi) ·
 [Academic](#academic)
 
 ---
@@ -51,6 +52,12 @@ and world models that simulate or predict environments. See the
 - 2025-04 · [π0.5: a Vision-Language-Action Model with Open-World Generalization](https://arxiv.org/abs/2504.16054)
 - 2025-11 · [π\*0.6: a VLA That Learns From Experience](https://arxiv.org/abs/2511.14759)
 - 2026-04 · [π0.7: a Steerable Generalist Robotic Foundation Model with Emergent Capabilities](https://arxiv.org/abs/2604.15483)
+
+## Xiaomi
+
+### Xiaomi-Robotics (VLA)
+
+- 2026-07 · [Xiaomi-Robotics-1: Scaling Vision-Language-Action Models with over 100K Hours of Real-World Trajectories](https://arxiv.org/abs/2607.15330)
 
 ## Academic
 
