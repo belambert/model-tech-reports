@@ -8,14 +8,16 @@ foundational reports from the closed frontier labs.
 
 | Page                                                  | Covers                                                                   |
 | ----------------------------------------------------- | ------------------------------------------------------------------------ |
-| [LLMs and VLMs](llms.md)                              | Language, reasoning, code, vision-language, speech, and omni models      |
+| [LLMs and VLMs](llms.md)                              | Language, reasoning, code, vision-language, and omni models              |
 | [VLAs and World Models](vla-and-world-models.md)      | Vision-language-action (robotics) models and world models                |
 | [Image and Video Generation](image-and-video.md)      | Text-to-image, image editing, and video generation models                |
+| [Speech and Audio](speech-and-audio.md)               | Speech recognition (ASR) and speech translation models                   |
 
 ## Scope
 
 - **Included:** Generative language models (base, chat, reasoning, code,
-  vision-language, omni), plus major VLA, world, image, and video models.
+  vision-language, omni), plus major VLA, world, image, video, and speech
+  models.
 - **Excluded:** Embedding, reranker, and classifier models; most
   fine-tunes; papers that only describe a technique rather than a released
   model.

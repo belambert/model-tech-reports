@@ -1,7 +1,8 @@
 # LLMs and VLMs
 
-Technical reports for language, reasoning, code, vision-language, speech, and
-omni models. See the [README](README.md) for scope and conventions.
+Technical reports for language, reasoning, code, vision-language, and omni
+models. Speech models are on the [Speech and Audio](speech-and-audio.md)
+page. See the [README](README.md) for scope and conventions.
 
 **Open-weight labs**
 [Google](#google) ·
@@ -111,7 +112,6 @@ omni models. See the [README](README.md) for scope and conventions.
 - 2024-01 · [Mixtral of Experts](https://arxiv.org/abs/2401.04088)
 - 2024-10 · [Pixtral 12B](https://arxiv.org/abs/2410.07073)
 - 2025-06 · [Magistral](https://arxiv.org/abs/2506.10910)
-- 2025-07 · [Voxtral](https://arxiv.org/abs/2507.13264)
 - 2025-12 · [Introducing Mistral 3](https://mistral.ai/news/mistral-3/) *(blog)*. This covers Mistral Large 3 and Ministral 3.
 - 2026-01 · [Ministral 3](https://arxiv.org/abs/2601.08584)
 
@@ -261,10 +261,6 @@ checkpoints along with the weights.
 ### gpt-oss (open-weight)
 
 - 2025-08 · [gpt-oss-120b & gpt-oss-20b Model Card](https://arxiv.org/abs/2508.10925)
-
-### Whisper (Speech)
-
-- 2022-12 · [Robust Speech Recognition via Large-Scale Weak Supervision](https://arxiv.org/abs/2212.04356)
 
 ## Anthropic
 
