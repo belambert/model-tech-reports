@@ -7,12 +7,19 @@ families:
     releases:
       - name: Octo
         date: 2024-05
+        note: "Open-weight; license: MIT"
+        weights:
+          - https://huggingface.co/rail-berkeley/octo-base-1.5
+          - https://huggingface.co/rail-berkeley/octo-small-1.5
         writeups:
           - kind: report
             title: "Octo: An Open-Source Generalist Robot Policy"
             url: https://arxiv.org/abs/2405.12213
       - name: OpenVLA
         date: 2024-06
+        note: "Open-weight; the largest linked checkpoint has about 7.5B total parameters; license: MIT"
+        weights:
+          - https://huggingface.co/openvla/openvla-7b
         writeups:
           - kind: report
             title: "OpenVLA: An Open-Source Vision-Language-Action Model"
@@ -23,6 +30,11 @@ families:
     releases:
       - name: OWSM
         date: 2023-09
+        note: "Open-weight; license: CC BY 4.0"
+        weights:
+          - https://huggingface.co/espnet/owsm_v3.1_ebf
+          - https://huggingface.co/espnet/owsm_v4_medium_1B
+          - https://huggingface.co/espnet/owsm_v3
         writeups:
           - kind: report
             title: Reproducing Whisper-Style Training Using an Open-Source Toolkit and Publicly Available Data

@@ -7,24 +7,43 @@ families:
     releases:
       - name: OLMo
         date: 2024-02
+        note: "Open-weight; the largest linked checkpoint has about 6.9B total parameters; license: Apache 2.0"
+        weights:
+          - https://huggingface.co/allenai/OLMo-7B
+          - https://huggingface.co/allenai/OLMo-1B
         writeups:
           - kind: report
             title: "OLMo: Accelerating the Science of Language Models"
             url: https://arxiv.org/abs/2402.00838
       - name: OLMoE
         date: 2024-09
+        note: "Open-weight; the largest linked checkpoint has about 6.9B total parameters; license: Apache 2.0"
+        weights:
+          - https://huggingface.co/allenai/OLMoE-1B-7B-0924
+          - https://huggingface.co/allenai/OLMoE-1B-7B-0924-Instruct
         writeups:
           - kind: report
             title: "OLMoE: Open Mixture-of-Experts Language Models"
             url: https://arxiv.org/abs/2409.02060
       - name: OLMo 2
         date: 2024-12
+        note: "Open-weight; the largest linked checkpoint has about 14B total parameters; license: Apache 2.0"
+        weights:
+          - https://huggingface.co/allenai/OLMo-2-1124-13B
+          - https://huggingface.co/allenai/OLMo-2-1124-7B
+          - https://huggingface.co/allenai/OLMo-2-0325-32B
         writeups:
           - kind: report
             title: 2 OLMo 2 Furious
             url: https://arxiv.org/abs/2501.00656
       - name: Olmo 3
         date: 2025-12
+        note: "Open-weight; the largest linked checkpoint has about 32B total parameters; license: Apache 2.0"
+        weights:
+          - https://huggingface.co/allenai/Olmo-3-1125-32B
+          - https://huggingface.co/allenai/Olmo-3-7B-Instruct
+          - https://huggingface.co/allenai/Olmo-3-32B-Think
+          - https://huggingface.co/allenai/Olmo-3-7B-Think
         writeups:
           - kind: report
             title: Olmo 3
@@ -35,12 +54,21 @@ families:
     releases:
       - name: Molmo
         date: 2024-09
+        note: "Open-weight; the largest linked checkpoint has about 73B total parameters; license: Apache 2.0"
+        weights:
+          - https://huggingface.co/allenai/Molmo-72B-0924
+          - https://huggingface.co/allenai/Molmo-7B-D-0924
+          - https://huggingface.co/allenai/MolmoE-1B-0924
         writeups:
           - kind: report
             title: "Molmo and PixMo: Open Weights and Open Data for State-of-the-Art Vision-Language Models"
             url: https://arxiv.org/abs/2409.17146
       - name: Tülu 3
         date: 2024-11
+        note: "Open-weight; the largest linked checkpoint has about 71B total parameters; license: the Llama 3.1 community license"
+        weights:
+          - https://huggingface.co/allenai/Llama-3.1-Tulu-3-70B
+          - https://huggingface.co/allenai/Llama-3.1-Tulu-3-8B
         writeups:
           - kind: report
             title: "Tulu 3: Pushing Frontiers in Open Language Model Post-Training"
@@ -51,6 +79,10 @@ families:
     releases:
       - name: MolmoAct
         date: 2025-08
+        note: "Open-weight; the largest linked checkpoint has about 8.1B total parameters; license: Apache 2.0"
+        weights:
+          - https://huggingface.co/allenai/MolmoAct-7B-D-0812
+          - https://huggingface.co/allenai/MolmoAct-7B-O-0812
         writeups:
           - kind: report
             title: "MolmoAct: Action Reasoning Models that can Reason in Space"

@@ -7,6 +7,9 @@ families:
     releases:
       - name: Command A
         date: 2025-04
+        note: "Open-weight; the largest linked checkpoint has about 111B total parameters; license: CC BY-NC 4.0"
+        weights:
+          - https://huggingface.co/CohereLabs/c4ai-command-a-03-2025
         writeups:
           - kind: report
             title: "Command A: An Enterprise-Ready Large Language Model"
@@ -17,24 +20,39 @@ families:
     releases:
       - name: Aya 101
         date: 2024-02
+        note: "Open-weight; the largest linked checkpoint has about 13B total parameters; license: Apache 2.0"
+        weights:
+          - https://huggingface.co/CohereForAI/aya-101
         writeups:
           - kind: report
             title: "Aya Model: An Instruction Finetuned Open-Access Multilingual Language Model"
             url: https://arxiv.org/abs/2402.07827
       - name: Aya 23
         date: 2024-05
+        note: "Open-weight; the largest linked checkpoint has about 35B total parameters; license: CC BY-NC 4.0"
+        weights:
+          - https://huggingface.co/CohereForAI/aya-23-35B
+          - https://huggingface.co/CohereForAI/aya-23-8B
         writeups:
           - kind: report
             title: "Aya 23: Open Weight Releases to Further Multilingual Progress"
             url: https://arxiv.org/abs/2405.15032
       - name: Aya Expanse
         date: 2024-12
+        note: "Open-weight; the largest linked checkpoint has about 32B total parameters; license: CC BY-NC 4.0"
+        weights:
+          - https://huggingface.co/CohereForAI/aya-expanse-32b
+          - https://huggingface.co/CohereForAI/aya-expanse-8b
         writeups:
           - kind: report
             title: "Aya Expanse: Combining Research Breakthroughs for a New Multilingual Frontier"
             url: https://arxiv.org/abs/2412.04261
       - name: Aya Vision
         date: 2025-05
+        note: "Open-weight; the largest linked checkpoint has about 33B total parameters; license: CC BY-NC 4.0"
+        weights:
+          - https://huggingface.co/CohereLabs/aya-vision-32b
+          - https://huggingface.co/CohereLabs/aya-vision-8b
         writeups:
           - kind: report
             title: "Aya Vision: Advancing the Frontier of Multilingual Multimodality"

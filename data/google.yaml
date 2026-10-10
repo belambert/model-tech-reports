@@ -8,48 +8,84 @@ families:
     releases:
       - name: Gemma
         date: 2024-03
+        note: "Open-weight; the largest linked checkpoint has about 8.5B total parameters; license: the Gemma terms of use"
+        weights:
+          - https://huggingface.co/google/gemma-7b
+          - https://huggingface.co/google/gemma-2b
+          - https://huggingface.co/google/gemma-7b-it
         writeups:
           - kind: report
             title: "Gemma: Open Models Based on Gemini Research and Technology"
             url: https://arxiv.org/abs/2403.08295
       - name: RecurrentGemma
         date: 2024-04
+        note: "Open-weight; the largest linked checkpoint has about 9.6B total parameters; license: the Gemma terms of use"
+        weights:
+          - https://huggingface.co/google/recurrentgemma-9b
+          - https://huggingface.co/google/recurrentgemma-2b
         writeups:
           - kind: report
             title: "RecurrentGemma: Moving Past Transformers for Efficient Open Language Models"
             url: https://arxiv.org/abs/2404.07839
       - name: CodeGemma
         date: 2024-06
+        note: "Open-weight; the largest linked checkpoint has about 8.5B total parameters; license: the Gemma terms of use"
+        weights:
+          - https://huggingface.co/google/codegemma-7b
+          - https://huggingface.co/google/codegemma-2b
         writeups:
           - kind: report
             title: "CodeGemma: Open Code Models Based on Gemma"
             url: https://arxiv.org/abs/2406.11409
       - name: Gemma 2
         date: 2024-07
+        note: "Open-weight; the largest linked checkpoint has about 27B total parameters; license: the Gemma terms of use"
+        weights:
+          - https://huggingface.co/google/gemma-2-27b-it
+          - https://huggingface.co/google/gemma-2-9b-it
+          - https://huggingface.co/google/gemma-2-2b-it
         writeups:
           - kind: report
             title: "Gemma 2: Improving Open Language Models at a Practical Size"
             url: https://arxiv.org/abs/2408.00118
       - name: PaliGemma
         date: 2024-07
+        note: "Open-weight; the largest linked checkpoint has about 2.9B total parameters; license: the Gemma terms of use"
+        weights:
+          - https://huggingface.co/google/paligemma-3b-pt-224
+          - https://huggingface.co/google/paligemma-3b-mix-224
         writeups:
           - kind: report
             title: "PaliGemma: A versatile 3B VLM for transfer"
             url: https://arxiv.org/abs/2407.07726
       - name: PaliGemma 2
         date: 2024-12
+        note: "Open-weight; the largest linked checkpoint has about 28B total parameters; license: the Gemma terms of use"
+        weights:
+          - https://huggingface.co/google/paligemma2-28b-pt-224
+          - https://huggingface.co/google/paligemma2-3b-pt-224
         writeups:
           - kind: report
             title: "PaliGemma 2: A Family of Versatile VLMs for Transfer"
             url: https://arxiv.org/abs/2412.03555
       - name: Gemma 3
         date: 2025-03
+        note: "Open-weight; the largest linked checkpoint has about 27B total parameters; license: the Gemma terms of use"
+        weights:
+          - https://huggingface.co/google/gemma-3-27b-it
+          - https://huggingface.co/google/gemma-3-12b-it
+          - https://huggingface.co/google/gemma-3-4b-it
+          - https://huggingface.co/google/gemma-3-1b-it
         writeups:
           - kind: report
             title: Gemma 3 Technical Report
             url: https://arxiv.org/abs/2503.19786
       - name: Gemma 3n
         date: 2025-06
+        note: "Open-weight; the largest linked checkpoint has about 7.8B total parameters; license: the Gemma terms of use"
+        weights:
+          - https://huggingface.co/google/gemma-3n-E4B-it
+          - https://huggingface.co/google/gemma-3n-E2B-it
         writeups:
           - kind: docs
             title: Gemma 3n

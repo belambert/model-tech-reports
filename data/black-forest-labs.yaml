@@ -7,6 +7,9 @@ families:
     releases:
       - name: FLUX.1 Kontext
         date: 2025-06
+        note: "Open-weight; the largest linked checkpoint has about 12B total parameters; license: a custom license"
+        weights:
+          - https://huggingface.co/black-forest-labs/FLUX.1-Kontext-dev
         writeups:
           - kind: report
             title: "FLUX.1 Kontext: Flow Matching for In-Context Image Generation and Editing in Latent Space"

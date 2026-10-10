@@ -7,6 +7,10 @@ families:
     releases:
       - name: FireRedASR
         date: 2025-01
+        note: "Open-weight; license: Apache 2.0"
+        weights:
+          - https://huggingface.co/FireRedTeam/FireRedASR-LLM-L
+          - https://huggingface.co/FireRedTeam/FireRedASR-AED-L
         writeups:
           - kind: report
             title: "FireRedASR: Open-Source Industrial-Grade Mandarin Speech Recognition Models from Encoder-Decoder to LLM Integration"

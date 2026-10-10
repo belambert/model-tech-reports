@@ -13,18 +13,31 @@ families:
             url: https://arxiv.org/abs/2501.12599
       - name: Kimi-VL
         date: 2025-04
+        note: "Open-weight; the largest linked checkpoint has about 16B total parameters; license: MIT"
+        weights:
+          - https://huggingface.co/moonshotai/Kimi-VL-A3B-Instruct
+          - https://huggingface.co/moonshotai/Kimi-VL-A3B-Thinking
         writeups:
           - kind: report
             title: Kimi-VL Technical Report
             url: https://arxiv.org/abs/2504.07491
       - name: Kimi K2
         date: 2025-07
+        note: "Open-weight; the largest linked checkpoint has about 1.0T total parameters; license: a custom license"
+        weights:
+          - https://huggingface.co/moonshotai/Kimi-K2-Instruct
+          - https://huggingface.co/moonshotai/Kimi-K2-Base
+          - https://huggingface.co/moonshotai/Kimi-K2-Thinking
         writeups:
           - kind: report
             title: "Kimi K2: Open Agentic Intelligence"
             url: https://arxiv.org/abs/2507.20534
       - name: Kimi Linear
         date: 2025-10
+        note: "Open-weight; the largest linked checkpoint has about 49B total parameters; license: MIT"
+        weights:
+          - https://huggingface.co/moonshotai/Kimi-Linear-48B-A3B-Instruct
+          - https://huggingface.co/moonshotai/Kimi-Linear-48B-A3B-Base
         writeups:
           - kind: report
             title: "Kimi Linear: An Expressive, Efficient Attention Architecture"

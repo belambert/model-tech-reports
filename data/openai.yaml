@@ -60,6 +60,10 @@ families:
     releases:
       - name: gpt-oss
         date: 2025-08
+        note: "Open-weight; the largest linked checkpoint has about 117B total parameters; license: Apache 2.0"
+        weights:
+          - https://huggingface.co/openai/gpt-oss-120b
+          - https://huggingface.co/openai/gpt-oss-20b
         writeups:
           - kind: report
             title: "gpt-oss-120b & gpt-oss-20b Model Card"
@@ -93,6 +97,11 @@ families:
     releases:
       - name: Whisper
         date: 2022-12
+        note: "Open-weight; the largest linked checkpoint has about 1.5B total parameters; license: Apache 2.0"
+        weights:
+          - https://huggingface.co/openai/whisper-large-v3
+          - https://huggingface.co/openai/whisper-large-v2
+          - https://huggingface.co/openai/whisper-small
         writeups:
           - kind: report
             title: Robust Speech Recognition via Large-Scale Weak Supervision

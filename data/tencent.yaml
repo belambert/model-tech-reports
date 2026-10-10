@@ -7,6 +7,9 @@ families:
     releases:
       - name: Hunyuan-Large
         date: 2024-11
+        note: "Open-weight; license: a custom license"
+        weights:
+          - https://huggingface.co/tencent/Tencent-Hunyuan-Large
         writeups:
           - kind: report
             title: "Hunyuan-Large: An Open-Source MoE Model with 52 Billion Activated Parameters by Tencent"
@@ -17,6 +20,9 @@ families:
     releases:
       - name: HunyuanWorld 1.0
         date: 2025-07
+        note: "Open-weight; license: a custom license"
+        weights:
+          - https://huggingface.co/tencent/HunyuanWorld-1
         writeups:
           - kind: report
             title: "HunyuanWorld 1.0: Generating Immersive, Explorable, and Interactive 3D Worlds from Words or Pixels"
@@ -27,6 +33,9 @@ families:
     releases:
       - name: HunyuanVideo
         date: 2024-12
+        note: "Open-weight; license: a custom license"
+        weights:
+          - https://huggingface.co/tencent/HunyuanVideo
         writeups:
           - kind: report
             title: "HunyuanVideo: A Systematic Framework For Large Video Generative Models"

@@ -13,24 +13,42 @@ families:
             url: https://arxiv.org/abs/2302.13971
       - name: Llama 2
         date: 2023-07
+        note: "Open-weight; the largest linked checkpoint has about 69B total parameters; license: the Llama 2 community license"
+        weights:
+          - https://huggingface.co/meta-llama/Llama-2-70b-hf
+          - https://huggingface.co/meta-llama/Llama-2-7b-hf
         writeups:
           - kind: report
             title: "Llama 2: Open Foundation and Fine-Tuned Chat Models"
             url: https://arxiv.org/abs/2307.09288
       - name: Code Llama
         date: 2023-08
+        note: "Open-weight; the largest linked checkpoint has about 69B total parameters; license: the Llama 2 community license"
+        weights:
+          - https://huggingface.co/meta-llama/CodeLlama-70b-hf
+          - https://huggingface.co/meta-llama/CodeLlama-34b-hf
+          - https://huggingface.co/meta-llama/CodeLlama-7b-hf
         writeups:
           - kind: report
             title: "Code Llama: Open Foundation Models for Code"
             url: https://arxiv.org/abs/2308.12950
       - name: Llama 3
         date: 2024-07
+        note: "Open-weight; the largest linked checkpoint has about 406B total parameters; license: the Llama 3.1 community license"
+        weights:
+          - https://huggingface.co/meta-llama/Llama-3.1-405B-Instruct
+          - https://huggingface.co/meta-llama/Llama-3.1-70B-Instruct
+          - https://huggingface.co/meta-llama/Llama-3.1-8B-Instruct
         writeups:
           - kind: report
             title: The Llama 3 Herd of Models
             url: https://arxiv.org/abs/2407.21783
       - name: Llama 4
         date: 2025-04
+        note: "Open-weight; the largest linked checkpoint has about 402B total parameters; license: a custom license"
+        weights:
+          - https://huggingface.co/meta-llama/Llama-4-Maverick-17B-128E-Instruct
+          - https://huggingface.co/meta-llama/Llama-4-Scout-17B-16E-Instruct
         writeups:
           - kind: blog
             title: The Llama 4 herd
@@ -41,6 +59,10 @@ families:
     releases:
       - name: Chameleon
         date: 2024-05
+        note: "Open-weight; the largest linked checkpoint has about 34B total parameters; license: a custom license"
+        weights:
+          - https://huggingface.co/facebook/chameleon-30b
+          - https://huggingface.co/facebook/chameleon-7b
         writeups:
           - kind: report
             title: "Chameleon: Mixed-Modal Early-Fusion Foundation Models"
@@ -51,6 +73,10 @@ families:
     releases:
       - name: V-JEPA 2
         date: 2025-06
+        note: "Open-weight; the largest linked checkpoint has about 1.0B total parameters; license: Apache 2.0"
+        weights:
+          - https://huggingface.co/facebook/vjepa2-vitg-fpc64-256
+          - https://huggingface.co/facebook/vjepa2-vitl-fpc64-256
         writeups:
           - kind: report
             title: "V-JEPA 2: Self-Supervised Video Models Enable Understanding, Prediction and Planning"
@@ -72,18 +98,29 @@ families:
     releases:
       - name: wav2vec 2.0
         date: 2020-06
+        note: "Open-weight; license: Apache 2.0"
+        weights:
+          - https://huggingface.co/facebook/wav2vec2-large-960h
+          - https://huggingface.co/facebook/wav2vec2-base-960h
         writeups:
           - kind: report
             title: "wav2vec 2.0: A Framework for Self-Supervised Learning of Speech Representations"
             url: https://arxiv.org/abs/2006.11477
       - name: MMS
         date: 2023-05
+        note: "Open-weight; the largest linked checkpoint has about 1.0B total parameters; license: CC BY-NC 4.0"
+        weights:
+          - https://huggingface.co/facebook/mms-1b-all
+          - https://huggingface.co/facebook/mms-300m
         writeups:
           - kind: report
             title: "Scaling Speech Technology to 1,000+ Languages"
             url: https://arxiv.org/abs/2305.13516
       - name: Omnilingual ASR
         date: 2025-11
+        note: "Open-weight; license: Apache 2.0"
+        weights:
+          - https://huggingface.co/facebook/omniASR-LLM-7B
         writeups:
           - kind: report
             title: "Omnilingual ASR: Open-Source Multilingual Speech Recognition for 1600+ Languages"
@@ -94,12 +131,21 @@ families:
     releases:
       - name: SeamlessM4T
         date: 2023-08
+        note: "Open-weight; the largest linked checkpoint has about 2.3B total parameters; license: CC BY-NC 4.0"
+        weights:
+          - https://huggingface.co/facebook/seamless-m4t-v2-large
+          - https://huggingface.co/facebook/seamless-m4t-large
         writeups:
           - kind: report
             title: "SeamlessM4T: Massively Multilingual & Multimodal Machine Translation"
             url: https://arxiv.org/abs/2308.11596
       - name: Seamless
         date: 2023-12
+        note: "Open-weight; the largest linked checkpoint has about 2.3B total parameters; license: CC BY-NC 4.0"
+        weights:
+          - https://huggingface.co/facebook/seamless-m4t-v2-large
+          - https://huggingface.co/facebook/seamless-streaming
+          - https://huggingface.co/facebook/hf-seamless-m4t-large
         writeups:
           - kind: report
             title: "Seamless: Multilingual Expressive and Streaming Speech Translation"
