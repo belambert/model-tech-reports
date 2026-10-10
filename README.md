@@ -4,6 +4,8 @@ A curated list of technical reports for major foundation models, focused on
 open-weight models and recent releases. It also covers the earlier
 foundational reports from the closed frontier labs.
 
+**[Browse all reports in a sortable, filterable table →](https://belambert.github.io/model-tech-reports/)**
+
 ## Pages
 
 | Page                                                  | Covers                                                                   |
