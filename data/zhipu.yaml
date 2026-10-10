@@ -25,6 +25,7 @@ families:
             url: https://arxiv.org/abs/2508.06471
       - name: GLM-5
         date: 2026-02
+        note: Open-weight MoE of about 754B total parameters, MIT license
         weights:
           - https://huggingface.co/zai-org/GLM-5
         writeups:
@@ -37,6 +38,7 @@ families:
             url: https://arxiv.org/abs/2603.12201
       - name: GLM-5.2
         date: 2026-06
+        note: Open-weight MoE of about 753B total parameters, MIT license
         weights:
           - https://huggingface.co/zai-org/GLM-5.2
         writeups:
@@ -55,6 +57,7 @@ families:
             url: https://www.nist.gov/system/files/documents/2026/07/17/CAISI%20-%20Assessment%20of%20Z.ai's%20GLM-5.2.pdf
       - name: GLM-5.3
         date: 2026-08
+        note: Open-weight GLM-5.3 (about 753B total parameters) and the smaller GLM-5.3-Flash (about 321B, MIT license); GLM-5.3 itself uses a custom license
         weights:
           - https://huggingface.co/zai-org/GLM-5.3
           - https://huggingface.co/zai-org/GLM-5.3-Flash

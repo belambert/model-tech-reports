@@ -116,6 +116,8 @@ families:
             url: https://arxiv.org/abs/2511.21631
       - name: Qwen3.5-Omni
         date: 2026-04
+        openness: closed
+        note: No open weights found on Hugging Face; the model is available through the Qwen API and demos
         writeups:
           - kind: report
             title: Qwen3.5-Omni Technical Report
@@ -173,6 +175,8 @@ families:
             url: https://arxiv.org/abs/2601.21337
       - name: Qwen-Audio-3.0-ASR
         date: 2026-09
+        openness: unknown
+        note: No open weights found on Hugging Face as of October 2026, unlike Qwen3-ASR
         writeups:
           - kind: report
             title: Qwen-Audio-3.0-ASR Technical Report
