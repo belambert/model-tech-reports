@@ -49,10 +49,39 @@ families:
             url: https://arxiv.org/abs/2512.20856
       - name: Nemotron 3 Super
         date: 2026-04
+        note: Open-weight hybrid Mamba-Transformer MoE, about 120B total and 12B active parameters, with a base model
+        weights:
+          - https://huggingface.co/nvidia/NVIDIA-Nemotron-3-Super-120B-A12B-BF16
+          - https://huggingface.co/nvidia/NVIDIA-Nemotron-3-Super-120B-A12B-Base-BF16
         writeups:
           - kind: report
             title: "Nemotron 3 Super: Open, Efficient Mixture-of-Experts Hybrid Mamba-Transformer Model for Agentic Reasoning"
             url: https://arxiv.org/abs/2604.12374
+      - name: Nemotron 3 Ultra
+        date: 2026-06
+        note: Open-weight hybrid Mamba-Transformer MoE, about 550B total and 55B active parameters, with base and GenRM checkpoints
+        weights:
+          - https://huggingface.co/nvidia/NVIDIA-Nemotron-3-Ultra-550B-A55B-BF16
+          - https://huggingface.co/nvidia/NVIDIA-Nemotron-3-Ultra-550B-A55B-NVFP4
+          - https://huggingface.co/nvidia/NVIDIA-Nemotron-3-Ultra-550B-A55B-Base-BF16
+        writeups:
+          - kind: report
+            title: NVIDIA Nemotron 3 Ultra Technical Report
+            url: https://research.nvidia.com/labs/nemotron/files/NVIDIA-Nemotron-3-Ultra-Technical-Report.pdf
+          - kind: model-card
+            title: NVIDIA-Nemotron-3-Ultra-550B-A55B-BF16
+            url: https://huggingface.co/nvidia/NVIDIA-Nemotron-3-Ultra-550B-A55B-BF16
+      - name: Nemotron 3.5 Lightning
+        date: 2026-08
+        note: Open-weight 30B-A3B model under the OpenMDW license, with base, NVFP4, and speculative-decoding checkpoints
+        weights:
+          - https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Lightning-30B-A3B-BF16
+          - https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Lightning-30B-A3B-Base-BF16
+          - https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Lightning-30B-A3B-NVFP4
+        writeups:
+          - kind: model-card
+            title: NVIDIA-Nemotron-3.5-Lightning-30B-A3B-BF16
+            url: https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Lightning-30B-A3B-BF16
 
   - name: Nemotron Multimodal
     category: llm
@@ -65,6 +94,9 @@ families:
             url: https://arxiv.org/abs/2409.11402
       - name: Nemotron 3 Nano Omni
         date: 2026-04
+        note: Open-weight 30B-A3B multimodal reasoning model, in BF16, FP8, and NVFP4
+        weights:
+          - https://huggingface.co/nvidia/Nemotron-3-Nano-Omni-30B-A3B-Reasoning-BF16
         writeups:
           - kind: report
             title: "Nemotron 3 Nano Omni: Efficient and Open Multimodal Intelligence"
@@ -93,6 +125,11 @@ families:
             url: https://arxiv.org/abs/2511.00062
       - name: Cosmos 3
         date: 2026-06
+        note: "Open-weight omnimodal world models: Super (about 65B parameters) and Nano (about 16B), plus an Edge variant"
+        weights:
+          - https://huggingface.co/nvidia/Cosmos3-Super
+          - https://huggingface.co/nvidia/Cosmos3-Nano
+          - https://huggingface.co/nvidia/Cosmos3-Edge
         writeups:
           - kind: report
             title: "Cosmos 3: Omnimodal World Models for Physical AI"
@@ -164,6 +201,7 @@ families:
             url: https://huggingface.co/nvidia/nemotron-speech-streaming-en-0.6b
       - name: nemotron-3.5-asr-streaming-0.6b
         date: 2026-05
+        note: Open-weight 0.6B streaming ASR model
         writeups:
           - kind: model-card
             title: nemotron-3.5-asr-streaming-0.6b

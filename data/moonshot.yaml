@@ -31,6 +31,9 @@ families:
             url: https://arxiv.org/abs/2510.26692
       - name: Kimi K2.5
         date: 2026-02
+        note: Open-weight multimodal MoE of about 1T total parameters, released under a modified MIT license
+        weights:
+          - https://huggingface.co/moonshotai/Kimi-K2.5
         writeups:
           - kind: report
             title: "Kimi K2.5: Visual Agentic Intelligence"

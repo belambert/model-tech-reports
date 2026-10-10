@@ -57,6 +57,10 @@ families:
             url: https://arxiv.org/abs/2508.07917
       - name: MolmoAct2
         date: 2026-05
+        note: Open-weight action reasoning models, with LIBERO, DROID, SO-100/101, and bimanual YAM checkpoints
+        weights:
+          - https://huggingface.co/allenai/MolmoAct2
+          - https://huggingface.co/allenai/MolmoAct2-Think
         writeups:
           - kind: report
             title: "MolmoAct2: Action Reasoning Models for Real-world Deployment"

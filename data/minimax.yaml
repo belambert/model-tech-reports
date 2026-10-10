@@ -19,7 +19,33 @@ families:
             url: https://arxiv.org/abs/2506.13585
       - name: MiniMax-M2
         date: 2026-05
+        note: Open-weight MoE series (about 229B total parameters); later checkpoints M2.1, M2.5, and M2.7 are on the same org
+        weights:
+          - https://huggingface.co/MiniMaxAI/MiniMax-M2
+          - https://huggingface.co/MiniMaxAI/MiniMax-M2.5
+          - https://huggingface.co/MiniMaxAI/MiniMax-M2.7
         writeups:
           - kind: report
             title: "The MiniMax-M2 Series: Mini Activations Unleashing Max Real-World Intelligence"
             url: https://arxiv.org/abs/2605.26494
+      - name: MiniMax-M2.5
+        date: 2026-02
+        note: Open-weight MoE, about 229B total parameters
+        weights:
+          - https://huggingface.co/MiniMaxAI/MiniMax-M2.5
+        writeups:
+          - kind: model-card
+            title: MiniMax-M2.5
+            url: https://huggingface.co/MiniMaxAI/MiniMax-M2.5
+      - name: MiniMax-M2.7
+        date: 2026-04
+        note: Open-weight MoE, about 229B total parameters
+        weights:
+          - https://huggingface.co/MiniMaxAI/MiniMax-M2.7
+        writeups:
+          - kind: blog
+            title: MiniMax M2.7
+            url: https://www.minimax.io/news/minimax-m27-en
+          - kind: model-card
+            title: MiniMax-M2.7
+            url: https://huggingface.co/MiniMaxAI/MiniMax-M2.7

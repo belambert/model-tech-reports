@@ -7,6 +7,10 @@ families:
     releases:
       - name: Laguna M.1 and XS.2
         date: 2026-05
+        note: "Open-weight coding models, Apache 2.0: M.1 (about 226B total parameters) and XS.2 (about 33B); newer XS 2.1 and S 2.1 checkpoints are on the same org"
+        weights:
+          - https://huggingface.co/poolside/Laguna-M.1
+          - https://huggingface.co/poolside/Laguna-XS.2
         writeups:
           - kind: report
             title: Laguna M.1/XS.2 Technical Report
@@ -14,3 +18,28 @@ families:
           - kind: blog
             title: Introducing Laguna XS.2 and Laguna M.1
             url: https://poolside.ai/blog/introducing-laguna-xs2-m1
+      - name: Laguna XS 2.1
+        date: 2026-06
+        note: Open-weight update to XS.2, about 33B total parameters, OpenMDW license
+        weights:
+          - https://huggingface.co/poolside/Laguna-XS-2.1
+        writeups:
+          - kind: blog
+            title: Introducing Laguna XS 2.1
+            url: https://poolside.ai/blog/introducing-laguna-xs-2-1
+          - kind: model-card
+            title: Laguna-XS-2.1
+            url: https://huggingface.co/poolside/Laguna-XS-2.1
+      - name: Laguna S 2.1
+        date: 2026-07
+        note: Open-weight mid-size model, about 118B total parameters, OpenMDW license, with a base checkpoint
+        weights:
+          - https://huggingface.co/poolside/Laguna-S-2.1
+          - https://huggingface.co/poolside/Laguna-S-2.1-base
+        writeups:
+          - kind: blog
+            title: Introducing Laguna S 2.1
+            url: https://poolside.ai/blog/introducing-laguna-s-2-1
+          - kind: model-card
+            title: Laguna-S-2.1
+            url: https://huggingface.co/poolside/Laguna-S-2.1
