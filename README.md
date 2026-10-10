@@ -69,6 +69,8 @@ invalid data, and deploys `main` to GitHub Pages. To build locally:
 
 ## TODO
 
+- [ ] Audit each company's data file for missing releases, dead or wrong
+  links, and stale openness values.
 - [ ] Add Reflection AI's Beam (501B-A23B, announced 2026-10-05) once the
   weights and a technical report or model card are published.
 - [ ] Link the Mistral Large 4 weights once Mistral releases them (announced
