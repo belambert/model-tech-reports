@@ -37,10 +37,37 @@ families:
             url: https://arxiv.org/abs/2512.02556
       - name: DeepSeek-V4
         date: 2026-04
+        note: "Open-weight MoE under MIT: V4-Pro (about 1.6T total parameters) and V4-Flash (about 290B), both with base models"
+        weights:
+          - https://huggingface.co/deepseek-ai/DeepSeek-V4-Pro
+          - https://huggingface.co/deepseek-ai/DeepSeek-V4-Flash
+          - https://huggingface.co/deepseek-ai/DeepSeek-V4-Pro-Base
+          - https://huggingface.co/deepseek-ai/DeepSeek-V4-Flash-Base
         writeups:
           - kind: report
             title: "DeepSeek-V4: Towards Highly Efficient Million-Token Context Intelligence"
             url: https://arxiv.org/abs/2606.19348
+      - name: DeepSeek-V4-Pro-0813
+        date: 2026-08
+        note: Open-weight update to V4-Pro under MIT; the V4 technical report covers the architecture
+        weights:
+          - https://huggingface.co/deepseek-ai/DeepSeek-V4-Pro-0813
+        writeups:
+          - kind: model-card
+            title: DeepSeek-V4-Pro-0813
+            url: https://huggingface.co/deepseek-ai/DeepSeek-V4-Pro-0813
+      - name: DeepSeek-V4.1
+        date: 2026-09
+        note: Open-weight V4.1-Flash, about 763B total parameters, MIT license
+        weights:
+          - https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash
+        writeups:
+          - kind: report
+            title: DeepSeek-V4.1 Technical Report
+            url: https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash/blob/main/DeepSeek_V41_Tech_Report.pdf
+          - kind: model-card
+            title: DeepSeek-V4.1-Flash
+            url: https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash
 
   - name: DeepSeek Reasoning and Math
     category: llm

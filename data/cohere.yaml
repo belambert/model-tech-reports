@@ -41,6 +41,13 @@ families:
             url: https://arxiv.org/abs/2505.08751
       - name: Tiny Aya
         date: 2026-03
+        note: Open-weight 3.35B multilingual model in global and regional variants; the weights are CC-BY-NC
+        weights:
+          - https://huggingface.co/CohereLabs/tiny-aya-global
+          - https://huggingface.co/CohereLabs/tiny-aya-base
+          - https://huggingface.co/CohereLabs/tiny-aya-earth
+          - https://huggingface.co/CohereLabs/tiny-aya-fire
+          - https://huggingface.co/CohereLabs/tiny-aya-water
         writeups:
           - kind: report
             title: "Tiny Aya: Bridging Scale and Multilingual Depth"
