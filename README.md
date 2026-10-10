@@ -66,3 +66,24 @@ invalid data, and deploys `main` to GitHub Pages. To build locally:
 
     pip install -r requirements.txt
     python3 scripts/build_site.py && open _site/index.html
+
+## TODO
+
+- Add Reflection AI's Beam (501B-A23B, announced 2026-10-05) once the weights
+  and a technical report or model card are published.
+- Link the Mistral Large 4 weights once Mistral releases them (announced for
+  the end of October 2026).
+- Add GLM-5.1 (2026-04), which has weights on Hugging Face but no release
+  entry.
+- Check whether Kimi k1.5 and Nemotron-4 15B are really open; no public
+  weights were found.
+- Find weights, if any exist, for Qwen-VLA, Qwen-RobotManip, π0.7, and
+  GLM-5V-Turbo, and add notes.
+- Re-check Qwen3.5-Omni (marked closed) and Qwen-Audio-3.0-ASR (marked
+  unknown) for a weights release.
+- Link official weights for π0 and π0.5, which currently point to LeRobot
+  ports.
+- Read the license text for releases whose Hugging Face license is `other`;
+  their notes just say "a custom license".
+- Keep parameter counts and notes manual; do not automate fetching them from
+  the Hugging Face API.
