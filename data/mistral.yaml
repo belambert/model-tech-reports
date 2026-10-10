@@ -65,6 +65,25 @@ families:
           - kind: report
             title: Ministral 3
             url: https://arxiv.org/abs/2601.08584
+      - name: Mistral Small 4
+        date: 2026-03
+        note: Open-weight MoE of about 119B total parameters under Apache 2.0, unifying reasoning, multimodal, and coding in one model
+        weights:
+          - https://huggingface.co/mistralai/Mistral-Small-4-119B-2603
+        writeups:
+          - kind: blog
+            title: Introducing Mistral Small 4
+            url: https://mistral.ai/news/mistral-small-4
+          - kind: model-card
+            title: Mistral-Small-4-119B-2603
+            url: https://huggingface.co/mistralai/Mistral-Small-4-119B-2603
+      - name: Mistral Large 4
+        date: 2026-10
+        note: Natively multimodal MoE of about 1T total and 52B active parameters. This is a public preview via the API; Mistral says the weights will be released at the end of October 2026
+        writeups:
+          - kind: blog
+            title: Introducing Mistral Large 4
+            url: https://mistral.ai/news/mistral-large-4/
 
   - name: Voxtral
     category: speech
