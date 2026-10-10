@@ -71,6 +71,8 @@ invalid data, and deploys `main` to GitHub Pages. To build locally:
 
 - Add Reflection AI's Beam (501B-A23B, announced 2026-10-05) once the weights
   and a technical report or model card are published.
+- Link the Mistral Large 4 weights once Mistral releases them (announced for
+  the end of October 2026).
 - Add GLM-5.1 (2026-04), which has weights on Hugging Face but no release
   entry.
 - Check whether Kimi k1.5 and Nemotron-4 15B are really open; no public
