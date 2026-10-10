@@ -56,6 +56,13 @@ families:
     releases:
       - name: Xiaomi-Robotics-1
         date: 2026-07
+        openness: open
+        note: Open-weight 5B VLA under Apache 2.0, with benchmark-specific checkpoints (RoboCasa, RoboCasa365, VLABench)
+        weights:
+          - https://huggingface.co/XiaomiRobotics/Xiaomi-Robotics-1-5B
+          - https://huggingface.co/XiaomiRobotics/Xiaomi-Robotics-1-RoboCasa
+          - https://huggingface.co/XiaomiRobotics/Xiaomi-Robotics-1-RoboCasa365
+          - https://huggingface.co/XiaomiRobotics/Xiaomi-Robotics-1-VLABench
         writeups:
           - kind: report
             title: "Xiaomi-Robotics-1: Scaling Vision-Language-Action Models with over 100K Hours of Real-World Trajectories"
