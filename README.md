@@ -43,3 +43,16 @@ family, in date order, using this format:
 
 Prefer arXiv abstract links. Use the paper's exact title, and mark entries
 that aren't full technical reports with *(blog)* or *(model card)*.
+
+## Web page
+
+`scripts/build_site.py` parses the pages above into a sortable, filterable
+table (`_site/index.html`) and a JSON dump (`_site/reports.json`). CI runs it
+on every push and pull request, fails on malformed entries, and deploys `main`
+to GitHub Pages. To build locally:
+
+    python3 scripts/build_site.py && open _site/index.html
+
+Open/closed is inferred from the **Open-weight labs** / **Closed labs** lists
+at the top of each page. A family heading ending in `(closed)` or
+`(open-weight)` overrides its company's setting.

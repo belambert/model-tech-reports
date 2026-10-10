@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Model Tech Reports</title>
+<style>
+  :root {
+    --bg: #fbfbfa; --surface: #ffffff; --text: #1d1d1b; --muted: #6b6b66;
+    --border: #e4e3df; --accent: #2f5bd3; --row-hover: #f3f3f0;
+    --open-bg: #e3f3e8; --open-fg: #1d6b3a;
+    --closed-bg: #f6e6e4; --closed-fg: #8f2f22;
+    --unknown-bg: #ececea; --unknown-fg: #5c5c57;
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #161615; --surface: #1e1e1c; --text: #e8e7e3; --muted: #9b9a94;
+      --border: #33332f; --accent: #8aa8ff; --row-hover: #252523;
+      --open-bg: #1d3426; --open-fg: #8fd6a6;
+      --closed-bg: #3a2220; --closed-fg: #f0a497;
+      --unknown-bg: #2c2c2a; --unknown-fg: #b3b2ac;
+      color-scheme: dark;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font: 14px/1.45 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  }
+  .wrap { max-width: 1200px; margin: 0 auto; padding: 32px 16px 64px; }
+  header h1 { font-size: 24px; margin: 0 0 4px; letter-spacing: -0.01em; }
+  header p { margin: 0; color: var(--muted); }
+  header a { color: var(--accent); }
+
+  .filters {
+    display: flex; flex-wrap: wrap; gap: 12px 16px; align-items: end;
+    margin: 24px 0 12px; padding: 14px; background: var(--surface);
+    border: 1px solid var(--border); border-radius: 10px;
+  }
+  .field { display: flex; flex-direction: column; gap: 4px; }
+  .field > span { font-size: 12px; color: var(--muted); font-weight: 500; }
+  .field.grow { flex: 1 1 220px; }
+  input[type=search], select {
+    font: inherit; color: inherit; background: var(--bg);
+    border: 1px solid var(--border); border-radius: 6px; padding: 6px 8px;
+  }
+  input[type=search] { width: 100%; }
+  .seg { display: inline-flex; border: 1px solid var(--border); border-radius: 6px; overflow: hidden; }
+  .seg button {
+    font: inherit; color: var(--text); background: var(--bg); border: 0;
+    padding: 6px 10px; cursor: pointer; border-left: 1px solid var(--border);
+  }
+  .seg button:first-child { border-left: 0; }
+  .seg button[aria-pressed=true] { background: var(--accent); color: var(--surface); }
+  .range { display: flex; gap: 6px; align-items: center; color: var(--muted); }
+  label.check { display: flex; gap: 6px; align-items: center; padding-bottom: 6px; cursor: pointer; }
+  button.reset {
+    font: inherit; background: none; border: 0; color: var(--accent);
+    cursor: pointer; padding: 6px 0;
+  }
+
+  .status { color: var(--muted); margin: 0 0 8px; font-size: 13px; }
+  .table-wrap {
+    overflow-x: auto; background: var(--surface);
+    border: 1px solid var(--border); border-radius: 10px;
+  }
+  table { width: 100%; border-collapse: collapse; min-width: 760px; }
+  th, td { text-align: left; padding: 8px 12px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  tbody tr:last-child td { border-bottom: 0; }
+  tbody tr:hover { background: var(--row-hover); }
+  th {
+    font-size: 12px; font-weight: 600; color: var(--muted); white-space: nowrap;
+    position: sticky; top: 0; background: var(--surface);
+  }
+  th button {
+    font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer;
+  }
+  th button::after { content: " ↕"; opacity: 0.35; }
+  th[aria-sort=ascending] button::after { content: " ↑"; opacity: 1; }
+  th[aria-sort=descending] button::after { content: " ↓"; opacity: 1; }
+  td.date { white-space: nowrap; font-variant-numeric: tabular-nums; color: var(--muted); }
+  td.title a { color: var(--text); text-decoration: none; font-weight: 500; }
+  td.title a:hover { color: var(--accent); text-decoration: underline; }
+  .sub { color: var(--muted); font-size: 12px; margin-top: 2px; }
+  .tag {
+    display: inline-block; font-size: 11px; font-weight: 600; padding: 1px 7px;
+    border-radius: 999px; white-space: nowrap;
+  }
+  .tag.open { background: var(--open-bg); color: var(--open-fg); }
+  .tag.closed { background: var(--closed-bg); color: var(--closed-fg); }
+  .tag.unknown { background: var(--unknown-bg); color: var(--unknown-fg); }
+  .kind { font-size: 11px; color: var(--muted); border: 1px solid var(--border); border-radius: 4px; padding: 0 5px; margin-left: 6px; white-space: nowrap; }
+  .empty { padding: 32px; text-align: center; color: var(--muted); }
+  footer { margin-top: 16px; color: var(--muted); font-size: 12px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>Model Tech Reports</h1>
+    <p>Technical reports for foundation models. Built from the
+      <a href="https://github.com/belambert/model-tech-reports">model-tech-reports</a> list.</p>
+  </header>
+
+  <form class="filters" id="filters" onsubmit="return false">
+    <label class="field grow"><span>Search</span>
+      <input type="search" id="q" placeholder="Title, company, family…" autocomplete="off">
+    </label>
+    <div class="field"><span>Weights</span>
+      <div class="seg" id="openness" role="group" aria-label="Weights">
+        <button type="button" data-v="">All</button>
+        <button type="button" data-v="open">Open</button>
+        <button type="button" data-v="closed">Closed</button>
+        <button type="button" data-v="unknown">Unknown</button>
+      </div>
+    </div>
+    <label class="field"><span>Category</span><select id="category"></select></label>
+    <label class="field"><span>Company</span><select id="company"></select></label>
+    <div class="field"><span>Date</span>
+      <div class="range">
+        <select id="from" aria-label="From year"></select>–<select id="to" aria-label="To year"></select>
+      </div>
+    </div>
+    <label class="check"><input type="checkbox" id="reportsOnly"> Full reports only</label>
+    <button type="button" class="reset" id="reset">Reset</button>
+  </form>
+
+  <p class="status" id="status" aria-live="polite"></p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr>
+        <th data-key="date"><button type="button">Date</button></th>
+        <th data-key="title"><button type="button">Title</button></th>
+        <th data-key="company"><button type="button">Company</button></th>
+        <th data-key="family"><button type="button">Family</button></th>
+        <th data-key="category"><button type="button">Category</button></th>
+        <th data-key="openness"><button type="button">Weights</button></th>
+      </tr></thead>
+      <tbody id="rows"></tbody>
+    </table>
+  </div>
+  <footer id="footer"></footer>
+</div>
+
+<script>
+const DATA = /*__REPORTS_DATA__*/null;
+const entries = DATA.entries;
+
+const $ = (id) => document.getElementById(id);
+const DEFAULTS = { q: "", openness: "", category: "", company: "", from: "", to: "", reportsOnly: false, sort: "date", dir: "desc" };
+const state = { ...DEFAULTS };
+
+const uniq = (xs) => [...new Set(xs)].sort((a, b) => a.localeCompare(b));
+function fillSelect(el, values, allLabel) {
+  el.innerHTML = "";
+  el.append(new Option(allLabel, ""));
+  for (const v of values) el.append(new Option(v, v));
+}
+const years = uniq(entries.map((e) => e.date.slice(0, 4)));
+fillSelect($("category"), uniq(entries.map((e) => e.category)), "All");
+fillSelect($("company"), uniq(entries.map((e) => e.company)), "All");
+fillSelect($("from"), years, "Any");
+fillSelect($("to"), years, "Any");
+
+// Persist filters in the URL so views can be shared.
+function readUrl() {
+  const p = new URLSearchParams(location.search);
+  for (const k of Object.keys(DEFAULTS)) {
+    if (!p.has(k)) continue;
+    state[k] = typeof DEFAULTS[k] === "boolean" ? p.get(k) === "1" : p.get(k);
+  }
+}
+function writeUrl() {
+  const p = new URLSearchParams();
+  for (const [k, d] of Object.entries(DEFAULTS)) {
+    if (state[k] !== d) p.set(k, typeof d === "boolean" ? "1" : state[k]);
+  }
+  const qs = p.toString();
+  history.replaceState(null, "", qs ? "?" + qs : location.pathname);
+}
+
+function syncControls() {
+  $("q").value = state.q;
+  $("category").value = state.category;
+  $("company").value = state.company;
+  $("from").value = state.from;
+  $("to").value = state.to;
+  $("reportsOnly").checked = state.reportsOnly;
+  for (const b of $("openness").querySelectorAll("button")) {
+    b.setAttribute("aria-pressed", String(b.dataset.v === state.openness));
+  }
+  for (const th of document.querySelectorAll("th[data-key]")) {
+    if (th.dataset.key === state.sort) th.setAttribute("aria-sort", state.dir === "asc" ? "ascending" : "descending");
+    else th.removeAttribute("aria-sort");
+  }
+}
+
+function matches(e) {
+  if (state.openness && e.openness !== state.openness) return false;
+  if (state.category && e.category !== state.category) return false;
+  if (state.company && e.company !== state.company) return false;
+  if (state.from && e.date.slice(0, 4) < state.from) return false;
+  if (state.to && e.date.slice(0, 4) > state.to) return false;
+  if (state.reportsOnly && e.kind !== "report") return false;
+  if (state.q) {
+    const hay = [e.title, e.company, e.family, e.category, e.note, e.arxiv].join(" ").toLowerCase();
+    if (!state.q.toLowerCase().split(/\s+/).every((t) => hay.includes(t))) return false;
+  }
+  return true;
+}
+
+function compare(a, b) {
+  const k = state.sort;
+  const x = (a[k] || "").toString(), y = (b[k] || "").toString();
+  let c = x.localeCompare(y);
+  if (c === 0 && k !== "date") c = b.date.localeCompare(a.date); // newest first within ties
+  if (c === 0) c = a.title.localeCompare(b.title);
+  return state.dir === "asc" ? c : -c;
+}
+
+function el(tag, attrs = {}, ...children) {
+  const n = document.createElement(tag);
+  for (const [k, v] of Object.entries(attrs)) n.setAttribute(k, v);
+  n.append(...children.filter((c) => c != null));
+  return n;
+}
+
+function render() {
+  syncControls();
+  writeUrl();
+  const rows = entries.filter(matches).sort(compare);
+  const body = $("rows");
+  body.replaceChildren();
+  for (const e of rows) {
+    const title = el("td", { class: "title" },
+      el("a", { href: e.url, target: "_blank", rel: "noopener" }, e.title),
+      e.kind !== "report" ? el("span", { class: "kind" }, e.kind) : null,
+      e.note ? el("div", { class: "sub" }, e.note) : null);
+    body.append(el("tr", {},
+      el("td", { class: "date" }, e.date),
+      title,
+      el("td", {}, e.company),
+      el("td", {}, e.family || ""),
+      el("td", {}, e.category),
+      el("td", {}, el("span", { class: "tag " + e.openness }, e.openness))));
+  }
+  if (!rows.length) body.append(el("tr", {}, el("td", { colspan: "6", class: "empty" }, "No reports match these filters.")));
+  $("status").textContent = `Showing ${rows.length} of ${entries.length} reports`;
+}
+
+// Wire up controls.
+$("q").addEventListener("input", (ev) => { state.q = ev.target.value.trim(); render(); });
+for (const id of ["category", "company", "from", "to"]) {
+  $(id).addEventListener("change", (ev) => { state[id] = ev.target.value; render(); });
+}
+$("reportsOnly").addEventListener("change", (ev) => { state.reportsOnly = ev.target.checked; render(); });
+$("openness").addEventListener("click", (ev) => {
+  const b = ev.target.closest("button");
+  if (b) { state.openness = b.dataset.v; render(); }
+});
+for (const th of document.querySelectorAll("th[data-key]")) {
+  th.querySelector("button").addEventListener("click", () => {
+    const k = th.dataset.key;
+    if (state.sort === k) state.dir = state.dir === "asc" ? "desc" : "asc";
+    else { state.sort = k; state.dir = k === "date" ? "desc" : "asc"; }
+    render();
+  });
+}
+$("reset").addEventListener("click", () => { Object.assign(state, DEFAULTS); render(); });
+
+$("footer").textContent = `Generated ${DATA.generated} · ${entries.length} entries`;
+readUrl();
+render();
+</script>
+</body>
+</html>
