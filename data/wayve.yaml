@@ -1,0 +1,19 @@
+company: Wayve
+openness: closed
+
+families:
+  - name: GAIA
+    category: world-model
+    releases:
+      - name: GAIA-1
+        date: 2023-09
+        writeups:
+          - kind: report
+            title: "GAIA-1: A Generative World Model for Autonomous Driving"
+            url: https://arxiv.org/abs/2309.17080
+      - name: GAIA-2
+        date: 2025-03
+        writeups:
+          - kind: report
+            title: "GAIA-2: A Controllable Multi-View Generative World Model for Autonomous Driving"
+            url: https://arxiv.org/abs/2503.20523

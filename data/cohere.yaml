@@ -1,0 +1,47 @@
+company: Cohere
+openness: open
+
+families:
+  - name: Command
+    category: llm
+    releases:
+      - name: Command A
+        date: 2025-04
+        writeups:
+          - kind: report
+            title: "Command A: An Enterprise-Ready Large Language Model"
+            url: https://arxiv.org/abs/2504.00698
+
+  - name: Aya (Cohere Labs)
+    category: llm
+    releases:
+      - name: Aya 101
+        date: 2024-02
+        writeups:
+          - kind: report
+            title: "Aya Model: An Instruction Finetuned Open-Access Multilingual Language Model"
+            url: https://arxiv.org/abs/2402.07827
+      - name: Aya 23
+        date: 2024-05
+        writeups:
+          - kind: report
+            title: "Aya 23: Open Weight Releases to Further Multilingual Progress"
+            url: https://arxiv.org/abs/2405.15032
+      - name: Aya Expanse
+        date: 2024-12
+        writeups:
+          - kind: report
+            title: "Aya Expanse: Combining Research Breakthroughs for a New Multilingual Frontier"
+            url: https://arxiv.org/abs/2412.04261
+      - name: Aya Vision
+        date: 2025-05
+        writeups:
+          - kind: report
+            title: "Aya Vision: Advancing the Frontier of Multilingual Multimodality"
+            url: https://arxiv.org/abs/2505.08751
+      - name: Tiny Aya
+        date: 2026-03
+        writeups:
+          - kind: report
+            title: "Tiny Aya: Bridging Scale and Multilingual Depth"
+            url: https://arxiv.org/abs/2603.11510

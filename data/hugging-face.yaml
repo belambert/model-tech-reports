@@ -1,0 +1,29 @@
+company: Hugging Face
+openness: open
+
+families:
+  - name: SmolLM and SmolVLM
+    category: llm
+    releases:
+      - name: SmolLM2
+        date: 2025-02
+        writeups:
+          - kind: report
+            title: "SmolLM2: When Smol Goes Big -- Data-Centric Training of a Small Language Model"
+            url: https://arxiv.org/abs/2502.02737
+      - name: SmolVLM
+        date: 2025-04
+        writeups:
+          - kind: report
+            title: "SmolVLM: Redefining small and efficient multimodal models"
+            url: https://arxiv.org/abs/2504.05299
+
+  - name: SmolVLA
+    category: vla
+    releases:
+      - name: SmolVLA
+        date: 2025-06
+        writeups:
+          - kind: report
+            title: "SmolVLA: A Vision-Language-Action Model for Affordable and Efficient Robotics"
+            url: https://arxiv.org/abs/2506.01844

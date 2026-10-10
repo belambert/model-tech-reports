@@ -1,0 +1,13 @@
+company: AgiBot
+openness: open
+
+families:
+  - name: GO-1
+    category: vla
+    releases:
+      - name: GO-1
+        date: 2025-03
+        writeups:
+          - kind: report
+            title: "AgiBot World Colosseo: A Large-scale Manipulation Platform for Scalable and Intelligent Embodied Systems"
+            url: https://arxiv.org/abs/2503.06669

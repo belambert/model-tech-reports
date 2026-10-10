@@ -1,0 +1,48 @@
+company: Xiaomi
+openness: open
+
+families:
+  - name: MiMo
+    category: llm
+    releases:
+      - name: MiMo
+        date: 2025-05
+        writeups:
+          - kind: report
+            title: "MiMo: Unlocking the Reasoning Potential of Language Model -- From Pretraining to Posttraining"
+            url: https://arxiv.org/abs/2505.07608
+      - name: MiMo-VL
+        date: 2025-06
+        writeups:
+          - kind: report
+            title: MiMo-VL Technical Report
+            url: https://arxiv.org/abs/2506.03569
+      - name: MiMo-V2-Flash
+        date: 2026-01
+        writeups:
+          - kind: report
+            title: MiMo-V2-Flash Technical Report
+            url: https://arxiv.org/abs/2601.02780
+      - name: MiMo-V2.5
+        date: 2026-04
+        writeups:
+          - kind: blog
+            title: MiMo-V2.5
+            url: https://mimo.xiaomi.com/mimo-v2-5/
+      - name: MiMo-V2.6
+        date: 2026-09
+        writeups:
+          - kind: report
+            title: "MiMo-V2.6: Scaling Reinforcement Learning Towards Self-Improvement"
+            url: https://huggingface.co/XiaomiMiMo/MiMo-V2.6-Pro-RL/blob/main/MiMo_V2_6_technical_report.pdf
+
+  - name: Xiaomi-Robotics
+    category: vla
+    openness: unknown
+    releases:
+      - name: Xiaomi-Robotics-1
+        date: 2026-07
+        writeups:
+          - kind: report
+            title: "Xiaomi-Robotics-1: Scaling Vision-Language-Action Models with over 100K Hours of Real-World Trajectories"
+            url: https://arxiv.org/abs/2607.15330

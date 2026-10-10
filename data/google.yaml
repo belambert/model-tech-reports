@@ -1,0 +1,212 @@
+company: Google
+openness: closed
+
+families:
+  - name: Gemma
+    category: llm
+    openness: open
+    releases:
+      - name: Gemma
+        date: 2024-03
+        writeups:
+          - kind: report
+            title: "Gemma: Open Models Based on Gemini Research and Technology"
+            url: https://arxiv.org/abs/2403.08295
+      - name: RecurrentGemma
+        date: 2024-04
+        writeups:
+          - kind: report
+            title: "RecurrentGemma: Moving Past Transformers for Efficient Open Language Models"
+            url: https://arxiv.org/abs/2404.07839
+      - name: CodeGemma
+        date: 2024-06
+        writeups:
+          - kind: report
+            title: "CodeGemma: Open Code Models Based on Gemma"
+            url: https://arxiv.org/abs/2406.11409
+      - name: Gemma 2
+        date: 2024-07
+        writeups:
+          - kind: report
+            title: "Gemma 2: Improving Open Language Models at a Practical Size"
+            url: https://arxiv.org/abs/2408.00118
+      - name: PaliGemma
+        date: 2024-07
+        writeups:
+          - kind: report
+            title: "PaliGemma: A versatile 3B VLM for transfer"
+            url: https://arxiv.org/abs/2407.07726
+      - name: PaliGemma 2
+        date: 2024-12
+        writeups:
+          - kind: report
+            title: "PaliGemma 2: A Family of Versatile VLMs for Transfer"
+            url: https://arxiv.org/abs/2412.03555
+      - name: Gemma 3
+        date: 2025-03
+        writeups:
+          - kind: report
+            title: Gemma 3 Technical Report
+            url: https://arxiv.org/abs/2503.19786
+      - name: Gemma 3n
+        date: 2025-06
+        writeups:
+          - kind: docs
+            title: Gemma 3n
+            url: https://ai.google.dev/gemma/docs/gemma-3n
+      - name: Gemma 4
+        date: 2026-07
+        writeups:
+          - kind: report
+            title: Gemma 4 Technical Report
+            url: https://arxiv.org/abs/2607.02770
+
+  - name: Gemini and PaLM
+    category: llm
+    releases:
+      - name: PaLM
+        date: 2022-04
+        writeups:
+          - kind: report
+            title: "PaLM: Scaling Language Modeling with Pathways"
+            url: https://arxiv.org/abs/2204.02311
+      - name: PaLM 2
+        date: 2023-05
+        writeups:
+          - kind: report
+            title: PaLM 2 Technical Report
+            url: https://arxiv.org/abs/2305.10403
+      - name: Gemini 1.0
+        date: 2023-12
+        writeups:
+          - kind: report
+            title: "Gemini: A Family of Highly Capable Multimodal Models"
+            url: https://arxiv.org/abs/2312.11805
+      - name: Gemini 1.5
+        date: 2024-03
+        writeups:
+          - kind: report
+            title: "Gemini 1.5: Unlocking multimodal understanding across millions of tokens of context"
+            url: https://arxiv.org/abs/2403.05530
+      - name: Gemini 2.5
+        date: 2025-07
+        writeups:
+          - kind: report
+            title: "Gemini 2.5: Pushing the Frontier with Advanced Reasoning, Multimodality, Long Context, and Next Generation Agentic Capabilities"
+            url: https://arxiv.org/abs/2507.06261
+      - name: Gemini 3 Pro
+        date: 2025-11
+        writeups:
+          - kind: model-card
+            title: Gemini 3 Pro Model Card
+            url: https://storage.googleapis.com/deepmind-media/Model-Cards/Gemini-3-Pro-Model-Card.pdf
+        related:
+          - title: DeepMind model cards (later Gemini models)
+            author: Google DeepMind
+            url: https://deepmind.google/models/model-cards/
+
+  - name: RT and Gemini Robotics
+    category: vla
+    releases:
+      - name: RT-1
+        date: 2022-12
+        openness: open
+        writeups:
+          - kind: report
+            title: "RT-1: Robotics Transformer for Real-World Control at Scale"
+            url: https://arxiv.org/abs/2212.06817
+      - name: RT-2
+        date: 2023-07
+        writeups:
+          - kind: report
+            title: "RT-2: Vision-Language-Action Models Transfer Web Knowledge to Robotic Control"
+            url: https://arxiv.org/abs/2307.15818
+      - name: Open X-Embodiment
+        date: 2023-10
+        openness: open
+        writeups:
+          - kind: report
+            title: "Open X-Embodiment: Robotic Learning Datasets and RT-X Models"
+            url: https://arxiv.org/abs/2310.08864
+      - name: Gemini Robotics
+        date: 2025-03
+        writeups:
+          - kind: report
+            title: "Gemini Robotics: Bringing AI into the Physical World"
+            url: https://arxiv.org/abs/2503.20020
+      - name: Gemini Robotics 1.5
+        date: 2025-10
+        writeups:
+          - kind: report
+            title: "Gemini Robotics 1.5: Pushing the Frontier of Generalist Robots with Advanced Embodied Reasoning, Thinking, and Motion Transfer"
+            url: https://arxiv.org/abs/2510.03342
+      - name: Gemini Robotics On-Device 2
+        date: 2026-07
+        note: This is a VLA built on Gemma
+        writeups:
+          - kind: model-card
+            title: Gemini Robotics On-Device 2
+            url: https://deepmind.google/models/model-cards/gemini-robotics-on-device-2/
+      - name: Gemini Robotics ER 2
+        date: 2026-07
+        note: This is the embodied-reasoning VLM that pairs with the VLA
+        writeups:
+          - kind: model-card
+            title: Gemini Robotics ER 2
+            url: https://deepmind.google/models/model-cards/gemini-robotics-er-2/
+
+  - name: Genie and Dreamer
+    category: world-model
+    releases:
+      - name: DreamerV3
+        date: 2023-01
+        openness: open
+        writeups:
+          - kind: report
+            title: Mastering Diverse Domains through World Models
+            url: https://arxiv.org/abs/2301.04104
+      - name: Genie
+        date: 2024-02
+        writeups:
+          - kind: report
+            title: "Genie: Generative Interactive Environments"
+            url: https://arxiv.org/abs/2402.15391
+      - name: Genie 3
+        date: 2025-08
+        writeups:
+          - kind: blog
+            title: "Genie 3: A new frontier for world models"
+            url: https://deepmind.google/blog/genie-3-a-new-frontier-for-world-models/
+
+  - name: Imagen and Veo
+    category: image-video
+    releases:
+      - name: Imagen 3
+        date: 2024-08
+        writeups:
+          - kind: report
+            title: Imagen 3
+            url: https://arxiv.org/abs/2408.07009
+      - name: Veo 3
+        date: 2025-09
+        note: This paper studies Veo 3
+        writeups:
+          - kind: report
+            title: Video models are zero-shot learners and reasoners
+            url: https://arxiv.org/abs/2509.20328
+
+  - name: Conformer and USM
+    category: speech
+    releases:
+      - name: Conformer
+        date: 2020-05
+        writeups:
+          - kind: report
+            title: "Conformer: Convolution-augmented Transformer for Speech Recognition"
+            url: https://arxiv.org/abs/2005.08100
+      - name: USM
+        date: 2023-03
+        writeups:
+          - kind: report
+            title: "Google USM: Scaling Automatic Speech Recognition Beyond 100 Languages"
+            url: https://arxiv.org/abs/2303.01037

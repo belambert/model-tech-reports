@@ -1,0 +1,13 @@
+company: Black Forest Labs
+openness: open
+
+families:
+  - name: FLUX
+    category: image-video
+    releases:
+      - name: FLUX.1 Kontext
+        date: 2025-06
+        writeups:
+          - kind: report
+            title: "FLUX.1 Kontext: Flow Matching for In-Context Image Generation and Editing in Latent Space"
+            url: https://arxiv.org/abs/2506.15742

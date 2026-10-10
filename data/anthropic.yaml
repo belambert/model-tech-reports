@@ -1,0 +1,57 @@
+company: Anthropic
+openness: closed
+
+families:
+  - name: Foundational Papers
+    category: llm
+    releases:
+      - name: HHH assistant
+        date: 2021-12
+        writeups:
+          - kind: report
+            title: A General Language Assistant as a Laboratory for Alignment
+            url: https://arxiv.org/abs/2112.00861
+      - name: HH-RLHF
+        date: 2022-04
+        writeups:
+          - kind: report
+            title: Training a Helpful and Harmless Assistant with Reinforcement Learning from Human Feedback
+            url: https://arxiv.org/abs/2204.05862
+      - name: Constitutional AI
+        date: 2022-12
+        writeups:
+          - kind: report
+            title: "Constitutional AI: Harmlessness from AI Feedback"
+            url: https://arxiv.org/abs/2212.08073
+
+  - name: Claude Model and System Cards
+    category: llm
+    releases:
+      - name: Claude 3
+        date: 2024-03
+        writeups:
+          - kind: report
+            title: "The Claude 3 Model Family: Opus, Sonnet, Haiku"
+            url: https://www-cdn.anthropic.com/de8ba9b01c9ab7cbabf5c33b80b7bbc618857627/Model_Card_Claude_3.pdf
+      - name: Claude Opus 4 and Sonnet 4
+        date: 2025-05
+        writeups:
+          - kind: report
+            title: "System Card: Claude Opus 4 & Claude Sonnet 4"
+            url: https://www-cdn.anthropic.com/4263b940cabb546aa0e3283f35b686f4f3b2ff47.pdf
+      - name: Claude Opus 4.5
+        date: 2025-11
+        writeups:
+          - kind: report
+            title: "System Card: Claude Opus 4.5"
+            url: https://assets.anthropic.com/m/64823ba7485345a7/Claude-Opus-4-5-System-Card.pdf
+      - name: Claude Opus 4.8
+        date: 2026-05
+        writeups:
+          - kind: report
+            title: "System Card: Claude Opus 4.8"
+            url: https://www-cdn.anthropic.com/0b4915911bb0d19eca5b5ee635c80fef830a37ea.pdf
+        related:
+          - title: All Claude system cards
+            author: Anthropic
+            url: https://www.anthropic.com/system-cards

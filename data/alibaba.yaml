@@ -1,0 +1,164 @@
+company: Alibaba (Qwen)
+openness: open
+
+families:
+  - name: Qwen LLMs
+    category: llm
+    releases:
+      - name: Qwen
+        date: 2023-09
+        writeups:
+          - kind: report
+            title: Qwen Technical Report
+            url: https://arxiv.org/abs/2309.16609
+      - name: Qwen2
+        date: 2024-07
+        writeups:
+          - kind: report
+            title: Qwen2 Technical Report
+            url: https://arxiv.org/abs/2407.10671
+      - name: Qwen2.5
+        date: 2024-12
+        writeups:
+          - kind: report
+            title: Qwen2.5 Technical Report
+            url: https://arxiv.org/abs/2412.15115
+      - name: Qwen2.5-1M
+        date: 2025-01
+        writeups:
+          - kind: report
+            title: Qwen2.5-1M Technical Report
+            url: https://arxiv.org/abs/2501.15383
+      - name: Qwen3
+        date: 2025-05
+        writeups:
+          - kind: report
+            title: Qwen3 Technical Report
+            url: https://arxiv.org/abs/2505.09388
+      - name: Qwen3.5
+        date: 2026-02
+        writeups:
+          - kind: blog
+            title: "Qwen3.5: Towards Native Multimodal Agents"
+            url: https://qwen.ai/blog?id=qwen3.5
+
+  - name: Qwen Code and Math
+    category: llm
+    releases:
+      - name: Qwen2.5-Coder
+        date: 2024-09
+        writeups:
+          - kind: report
+            title: Qwen2.5-Coder Technical Report
+            url: https://arxiv.org/abs/2409.12186
+      - name: Qwen2.5-Math
+        date: 2024-09
+        writeups:
+          - kind: report
+            title: "Qwen2.5-Math Technical Report: Toward Mathematical Expert Model via Self-Improvement"
+            url: https://arxiv.org/abs/2409.12122
+      - name: Qwen3-Coder-Next
+        date: 2026-02
+        writeups:
+          - kind: report
+            title: Qwen3-Coder-Next Technical Report
+            url: https://arxiv.org/abs/2603.00729
+
+  - name: Qwen Vision-Language and Omni
+    category: llm
+    releases:
+      - name: Qwen-VL
+        date: 2023-08
+        writeups:
+          - kind: report
+            title: "Qwen-VL: A Versatile Vision-Language Model for Understanding, Localization, Text Reading, and Beyond"
+            url: https://arxiv.org/abs/2308.12966
+      - name: Qwen2-VL
+        date: 2024-09
+        writeups:
+          - kind: report
+            title: "Qwen2-VL: Enhancing Vision-Language Model's Perception of the World at Any Resolution"
+            url: https://arxiv.org/abs/2409.12191
+      - name: Qwen2.5-VL
+        date: 2025-02
+        writeups:
+          - kind: report
+            title: Qwen2.5-VL Technical Report
+            url: https://arxiv.org/abs/2502.13923
+      - name: Qwen2.5-Omni
+        date: 2025-03
+        writeups:
+          - kind: report
+            title: Qwen2.5-Omni Technical Report
+            url: https://arxiv.org/abs/2503.20215
+      - name: Qwen3-Omni
+        date: 2025-09
+        writeups:
+          - kind: report
+            title: Qwen3-Omni Technical Report
+            url: https://arxiv.org/abs/2509.17765
+      - name: Qwen3-VL
+        date: 2025-11
+        writeups:
+          - kind: report
+            title: Qwen3-VL Technical Report
+            url: https://arxiv.org/abs/2511.21631
+      - name: Qwen3.5-Omni
+        date: 2026-04
+        writeups:
+          - kind: report
+            title: Qwen3.5-Omni Technical Report
+            url: https://arxiv.org/abs/2604.15804
+
+  - name: Qwen Robotics
+    category: vla
+    openness: unknown
+    releases:
+      - name: Qwen-VLA
+        date: 2026-05
+        writeups:
+          - kind: report
+            title: "Qwen-VLA: Unifying Vision-Language-Action Modeling across Tasks, Environments, and Robot Embodiments"
+            url: https://arxiv.org/abs/2605.30280
+      - name: Qwen-RobotManip
+        date: 2026-06
+        writeups:
+          - kind: report
+            title: "Qwen-RobotManip Technical Report: Alignment Unlocks Scale for Robotic Manipulation Foundation Models"
+            url: https://arxiv.org/abs/2606.17846
+
+  - name: Wan (Video)
+    category: image-video
+    releases:
+      - name: Wan 2.1
+        date: 2025-03
+        writeups:
+          - kind: report
+            title: "Wan: Open and Advanced Large-Scale Video Generative Models"
+            url: https://arxiv.org/abs/2503.20314
+
+  - name: Qwen-Image
+    category: image-video
+    releases:
+      - name: Qwen-Image
+        date: 2025-08
+        writeups:
+          - kind: report
+            title: Qwen-Image Technical Report
+            url: https://arxiv.org/abs/2508.02324
+
+  - name: Qwen ASR
+    category: speech
+    releases:
+      - name: Qwen3-ASR
+        date: 2026-01
+        writeups:
+          - kind: report
+            title: Qwen3-ASR Technical Report
+            url: https://arxiv.org/abs/2601.21337
+      - name: Qwen-Audio-3.0-ASR
+        date: 2026-09
+        writeups:
+          - kind: report
+            title: Qwen-Audio-3.0-ASR Technical Report
+            url: https://arxiv.org/abs/2609.07549

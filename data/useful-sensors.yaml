@@ -1,0 +1,13 @@
+company: Useful Sensors
+openness: open
+
+families:
+  - name: Moonshine
+    category: speech
+    releases:
+      - name: Moonshine
+        date: 2024-10
+        writeups:
+          - kind: report
+            title: "Moonshine: Speech Recognition for Live Transcription and Voice Commands"
+            url: https://arxiv.org/abs/2410.15608

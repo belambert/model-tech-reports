@@ -1,0 +1,31 @@
+company: Stability AI
+openness: open
+
+families:
+  - name: Stable Diffusion
+    category: image-video
+    releases:
+      - name: Stable Diffusion
+        date: 2021-12
+        writeups:
+          - kind: report
+            title: High-Resolution Image Synthesis with Latent Diffusion Models
+            url: https://arxiv.org/abs/2112.10752
+      - name: SDXL
+        date: 2023-07
+        writeups:
+          - kind: report
+            title: "SDXL: Improving Latent Diffusion Models for High-Resolution Image Synthesis"
+            url: https://arxiv.org/abs/2307.01952
+      - name: Stable Video Diffusion
+        date: 2023-11
+        writeups:
+          - kind: report
+            title: "Stable Video Diffusion: Scaling Latent Video Diffusion Models to Large Datasets"
+            url: https://arxiv.org/abs/2311.15127
+      - name: Stable Diffusion 3
+        date: 2024-03
+        writeups:
+          - kind: report
+            title: Scaling Rectified Flow Transformers for High-Resolution Image Synthesis
+            url: https://arxiv.org/abs/2403.03206
