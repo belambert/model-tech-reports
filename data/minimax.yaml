@@ -7,12 +7,20 @@ families:
     releases:
       - name: MiniMax-01
         date: 2025-01
+        note: Open-weight; the largest linked checkpoint has about 456B total parameters
+        weights:
+          - https://huggingface.co/MiniMaxAI/MiniMax-Text-01
+          - https://huggingface.co/MiniMaxAI/MiniMax-VL-01
         writeups:
           - kind: report
             title: "MiniMax-01: Scaling Foundation Models with Lightning Attention"
             url: https://arxiv.org/abs/2501.08313
       - name: MiniMax-M1
         date: 2025-06
+        note: "Open-weight; the largest linked checkpoint has about 456B total parameters; license: Apache 2.0"
+        weights:
+          - https://huggingface.co/MiniMaxAI/MiniMax-M1-80k
+          - https://huggingface.co/MiniMaxAI/MiniMax-M1-40k
         writeups:
           - kind: report
             title: "MiniMax-M1: Scaling Test-Time Compute Efficiently with Lightning Attention"

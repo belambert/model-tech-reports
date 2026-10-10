@@ -7,6 +7,9 @@ families:
     releases:
       - name: Matrix-Game 2.0
         date: 2025-08
+        note: "Open-weight; license: MIT"
+        weights:
+          - https://huggingface.co/Skywork/Matrix-Game-2.0
         writeups:
           - kind: report
             title: "Matrix-game 2.0: An open-source real-time and streaming interactive world model"

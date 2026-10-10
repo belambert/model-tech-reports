@@ -7,30 +7,47 @@ families:
     releases:
       - name: Mistral 7B
         date: 2023-10
+        note: "Open-weight; the largest linked checkpoint has about 7.2B total parameters; license: Apache 2.0"
+        weights:
+          - https://huggingface.co/mistralai/Mistral-7B-v0.1
+          - https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.1
         writeups:
           - kind: report
             title: Mistral 7B
             url: https://arxiv.org/abs/2310.06825
       - name: Mixtral 8x7B
         date: 2024-01
+        note: "Open-weight; the largest linked checkpoint has about 47B total parameters; license: Apache 2.0"
+        weights:
+          - https://huggingface.co/mistralai/Mixtral-8x7B-v0.1
+          - https://huggingface.co/mistralai/Mixtral-8x7B-Instruct-v0.1
         writeups:
           - kind: report
             title: Mixtral of Experts
             url: https://arxiv.org/abs/2401.04088
       - name: Pixtral 12B
         date: 2024-10
+        note: "Open-weight; license: Apache 2.0"
+        weights:
+          - https://huggingface.co/mistralai/Pixtral-12B-2409
         writeups:
           - kind: report
             title: Pixtral 12B
             url: https://arxiv.org/abs/2410.07073
       - name: Magistral
         date: 2025-06
+        note: "Open-weight; the largest linked checkpoint has about 24B total parameters; license: Apache 2.0"
+        weights:
+          - https://huggingface.co/mistralai/Magistral-Small-2506
         writeups:
           - kind: report
             title: Magistral
             url: https://arxiv.org/abs/2506.10910
       - name: Mistral 3
         date: 2025-12
+        weights:
+          - https://huggingface.co/mistralai/Mistral-Large-3-675B-Instruct-2512
+          - https://huggingface.co/mistralai/Mistral-Large-3-675B-Base-2512
         note: This covers Mistral Large 3 and Ministral 3
         writeups:
           - kind: blog
@@ -54,6 +71,10 @@ families:
     releases:
       - name: Voxtral
         date: 2025-07
+        note: "Open-weight; the largest linked checkpoint has about 24B total parameters; license: Apache 2.0"
+        weights:
+          - https://huggingface.co/mistralai/Voxtral-Small-24B-2507
+          - https://huggingface.co/mistralai/Voxtral-Mini-3B-2507
         writeups:
           - kind: report
             title: Voxtral

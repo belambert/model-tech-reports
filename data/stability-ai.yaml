@@ -7,24 +7,38 @@ families:
     releases:
       - name: Stable Diffusion
         date: 2021-12
+        note: "Open-weight; the largest linked checkpoint has about 0.9B total parameters; license: CreativeML OpenRAIL-M"
+        weights:
+          - https://huggingface.co/CompVis/stable-diffusion-v1-4
+          - https://huggingface.co/stable-diffusion-v1-5/stable-diffusion-v1-5
         writeups:
           - kind: report
             title: High-Resolution Image Synthesis with Latent Diffusion Models
             url: https://arxiv.org/abs/2112.10752
       - name: SDXL
         date: 2023-07
+        note: "Open-weight; the largest linked checkpoint has about 2.6B total parameters; license: OpenRAIL++"
+        weights:
+          - https://huggingface.co/stabilityai/stable-diffusion-xl-base-1.0
         writeups:
           - kind: report
             title: "SDXL: Improving Latent Diffusion Models for High-Resolution Image Synthesis"
             url: https://arxiv.org/abs/2307.01952
       - name: Stable Video Diffusion
         date: 2023-11
+        note: "Open-weight; the largest linked checkpoint has about 1.5B total parameters; license: a custom license"
+        weights:
+          - https://huggingface.co/stabilityai/stable-video-diffusion-img2vid-xt
         writeups:
           - kind: report
             title: "Stable Video Diffusion: Scaling Latent Video Diffusion Models to Large Datasets"
             url: https://arxiv.org/abs/2311.15127
       - name: Stable Diffusion 3
         date: 2024-03
+        note: "Open-weight; license: a custom license"
+        weights:
+          - https://huggingface.co/stabilityai/stable-diffusion-3-medium
+          - https://huggingface.co/stabilityai/stable-diffusion-3.5-large
         writeups:
           - kind: report
             title: Scaling Rectified Flow Transformers for High-Resolution Image Synthesis

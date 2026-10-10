@@ -7,6 +7,10 @@ families:
     releases:
       - name: Kyutai STT
         date: 2025-09
+        note: "Open-weight; the largest linked checkpoint has about 2.6B total parameters; license: CC BY 4.0"
+        weights:
+          - https://huggingface.co/kyutai/stt-2.6b-en
+          - https://huggingface.co/kyutai/stt-1b-en_fr
         writeups:
           - kind: report
             title: Streaming Sequence-to-Sequence Learning with Delayed Streams Modeling

@@ -13,12 +13,21 @@ families:
             url: https://arxiv.org/abs/2210.02414
       - name: ChatGLM / GLM-4
         date: 2024-06
+        note: "Open-weight; the largest linked checkpoint has about 9.4B total parameters; license: a custom license"
+        weights:
+          - https://huggingface.co/THUDM/glm-4-9b-chat
+          - https://huggingface.co/THUDM/glm-4-9b
         writeups:
           - kind: report
             title: "ChatGLM: A Family of Large Language Models from GLM-130B to GLM-4 All Tools"
             url: https://arxiv.org/abs/2406.12793
       - name: GLM-4.5
         date: 2025-08
+        note: "Open-weight; the largest linked checkpoint has about 358B total parameters; license: MIT"
+        weights:
+          - https://huggingface.co/zai-org/GLM-4.5
+          - https://huggingface.co/zai-org/GLM-4.5-Air
+          - https://huggingface.co/zai-org/GLM-4.5-Base
         writeups:
           - kind: report
             title: "GLM-4.5: Agentic, Reasoning, and Coding (ARC) Foundation Models"
@@ -78,12 +87,19 @@ families:
     releases:
       - name: CogVLM
         date: 2023-11
+        note: "Open-weight; the largest linked checkpoint has about 18B total parameters; license: Apache 2.0"
+        weights:
+          - https://huggingface.co/THUDM/cogvlm-chat-hf
         writeups:
           - kind: report
             title: "CogVLM: Visual Expert for Pretrained Language Models"
             url: https://arxiv.org/abs/2311.03079
       - name: GLM-4.5V and GLM-4.1V-Thinking
         date: 2025-07
+        note: "Open-weight; the largest linked checkpoint has about 108B total parameters; license: MIT"
+        weights:
+          - https://huggingface.co/zai-org/GLM-4.5V
+          - https://huggingface.co/zai-org/GLM-4.1V-9B-Thinking
         writeups:
           - kind: report
             title: "GLM-4.5V and GLM-4.1V-Thinking: Towards Versatile Multimodal Reasoning with Scalable Reinforcement Learning"
@@ -100,6 +116,10 @@ families:
     releases:
       - name: CogVideoX
         date: 2024-08
+        note: "Open-weight; the largest linked checkpoint has about 5.6B total parameters; license: a custom license"
+        weights:
+          - https://huggingface.co/THUDM/CogVideoX-5b
+          - https://huggingface.co/THUDM/CogVideoX-2b
         writeups:
           - kind: report
             title: "CogVideoX: Text-to-Video Diffusion Models with An Expert Transformer"

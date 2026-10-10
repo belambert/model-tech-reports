@@ -7,12 +7,18 @@ families:
     releases:
       - name: π0
         date: 2024-10
+        note: "Open-weight; the largest linked checkpoint has about 3.5B total parameters; license: the Gemma terms of use"
+        weights:
+          - https://huggingface.co/lerobot/pi0_base
         writeups:
           - kind: report
             title: "π0: A Vision-Language-Action Flow Model for General Robot Control"
             url: https://arxiv.org/abs/2410.24164
       - name: π0.5
         date: 2025-04
+        note: "Open-weight; the largest linked checkpoint has about 3.6B total parameters; license: the Gemma terms of use"
+        weights:
+          - https://huggingface.co/lerobot/pi05_base
         writeups:
           - kind: report
             title: "π0.5: a Vision-Language-Action Model with Open-World Generalization"

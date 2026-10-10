@@ -7,6 +7,10 @@ families:
     releases:
       - name: Moonshine
         date: 2024-10
+        note: "Open-weight; the largest linked checkpoint has about 0.1B total parameters; license: MIT"
+        weights:
+          - https://huggingface.co/UsefulSensors/moonshine-base
+          - https://huggingface.co/UsefulSensors/moonshine-tiny
         writeups:
           - kind: report
             title: "Moonshine: Speech Recognition for Live Transcription and Voice Commands"
