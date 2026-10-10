@@ -1,0 +1,13 @@
+company: Xiaohongshu
+openness: open
+
+families:
+  - name: FireRedASR
+    category: speech
+    releases:
+      - name: FireRedASR
+        date: 2025-01
+        writeups:
+          - kind: report
+            title: "FireRedASR: Open-Source Industrial-Grade Mandarin Speech Recognition Models from Encoder-Decoder to LLM Integration"
+            url: https://arxiv.org/abs/2501.14350

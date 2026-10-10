@@ -1,0 +1,65 @@
+company: Microsoft
+openness: open
+
+families:
+  - name: Phi
+    category: llm
+    releases:
+      - name: phi-1
+        date: 2023-06
+        writeups:
+          - kind: report
+            title: Textbooks Are All You Need
+            url: https://arxiv.org/abs/2306.11644
+      - name: phi-1.5
+        date: 2023-09
+        writeups:
+          - kind: report
+            title: "Textbooks Are All You Need II: phi-1.5 technical report"
+            url: https://arxiv.org/abs/2309.05463
+      - name: Phi-3
+        date: 2024-04
+        writeups:
+          - kind: report
+            title: "Phi-3 Technical Report: A Highly Capable Language Model Locally on Your Phone"
+            url: https://arxiv.org/abs/2404.14219
+      - name: Phi-4
+        date: 2024-12
+        writeups:
+          - kind: report
+            title: Phi-4 Technical Report
+            url: https://arxiv.org/abs/2412.08905
+      - name: Phi-4-Mini
+        date: 2025-03
+        writeups:
+          - kind: report
+            title: "Phi-4-Mini Technical Report: Compact yet Powerful Multimodal Language Models via Mixture-of-LoRAs"
+            url: https://arxiv.org/abs/2503.01743
+      - name: Phi-4-reasoning
+        date: 2025-04
+        writeups:
+          - kind: report
+            title: Phi-4-reasoning Technical Report
+            url: https://arxiv.org/abs/2504.21318
+      - name: Phi-4-reasoning-vision-15B
+        date: 2026-03
+        writeups:
+          - kind: report
+            title: Phi-4-reasoning-vision-15B Technical Report
+            url: https://arxiv.org/abs/2603.03975
+
+  - name: VibeVoice-ASR
+    category: speech
+    releases:
+      - name: VibeVoice-ASR
+        date: 2026-01
+        writeups:
+          - kind: report
+            title: VIBEVOICE-ASR Technical Report
+            url: https://arxiv.org/abs/2601.18184
+      - name: VibeVoice-ASR-Streaming
+        date: 2026-09
+        writeups:
+          - kind: report
+            title: VibeVoice-ASR-Streaming Technical Report
+            url: https://arxiv.org/abs/2609.02812

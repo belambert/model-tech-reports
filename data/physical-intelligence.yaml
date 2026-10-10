@@ -1,0 +1,33 @@
+company: Physical Intelligence
+openness: open
+
+families:
+  - name: π
+    category: vla
+    releases:
+      - name: π0
+        date: 2024-10
+        writeups:
+          - kind: report
+            title: "π0: A Vision-Language-Action Flow Model for General Robot Control"
+            url: https://arxiv.org/abs/2410.24164
+      - name: π0.5
+        date: 2025-04
+        writeups:
+          - kind: report
+            title: "π0.5: a Vision-Language-Action Model with Open-World Generalization"
+            url: https://arxiv.org/abs/2504.16054
+      - name: "π*0.6"
+        date: 2025-11
+        openness: closed
+        writeups:
+          - kind: report
+            title: "π*0.6: a VLA That Learns From Experience"
+            url: https://arxiv.org/abs/2511.14759
+      - name: π0.7
+        date: 2026-04
+        openness: unknown
+        writeups:
+          - kind: report
+            title: "π0.7: a Steerable Generalist Robotic Foundation Model with Emergent Capabilities"
+            url: https://arxiv.org/abs/2604.15483

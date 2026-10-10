@@ -1,0 +1,103 @@
+company: Zhipu AI / Z.ai
+openness: open
+
+families:
+  - name: GLM LLMs
+    category: llm
+    releases:
+      - name: GLM-130B
+        date: 2022-10
+        writeups:
+          - kind: report
+            title: "GLM-130B: An Open Bilingual Pre-trained Model"
+            url: https://arxiv.org/abs/2210.02414
+      - name: ChatGLM / GLM-4
+        date: 2024-06
+        writeups:
+          - kind: report
+            title: "ChatGLM: A Family of Large Language Models from GLM-130B to GLM-4 All Tools"
+            url: https://arxiv.org/abs/2406.12793
+      - name: GLM-4.5
+        date: 2025-08
+        writeups:
+          - kind: report
+            title: "GLM-4.5: Agentic, Reasoning, and Coding (ARC) Foundation Models"
+            url: https://arxiv.org/abs/2508.06471
+      - name: GLM-5
+        date: 2026-02
+        weights:
+          - https://huggingface.co/zai-org/GLM-5
+        writeups:
+          - kind: report
+            title: "GLM-5: from Vibe Coding to Agentic Engineering"
+            url: https://arxiv.org/abs/2602.15763
+        related:
+          - title: "IndexCache: Accelerating Sparse Attention via Cross-Layer Index Reuse"
+            author: Zhipu AI and Tsinghua University
+            url: https://arxiv.org/abs/2603.12201
+      - name: GLM-5.2
+        date: 2026-06
+        weights:
+          - https://huggingface.co/zai-org/GLM-5.2
+        writeups:
+          - kind: blog
+            title: GLM-5.2
+            url: https://z.ai/blog/glm-5.2
+          - kind: docs
+            title: GLM-5.2 Overview
+            url: https://docs.z.ai/guides/llm/glm-5.2
+        related:
+          - title: GLM-5.2 IndexShare Architecture Note
+            author: Sebastian Raschka
+            url: https://sebastianraschka.com/blog/2026/glm-5-2-indexshare.html
+          - title: "Assessment of Z.ai's GLM-5.2"
+            author: NIST CAISI
+            url: https://www.nist.gov/system/files/documents/2026/07/17/CAISI%20-%20Assessment%20of%20Z.ai's%20GLM-5.2.pdf
+      - name: GLM-5.3
+        date: 2026-08
+        weights:
+          - https://huggingface.co/zai-org/GLM-5.3
+          - https://huggingface.co/zai-org/GLM-5.3-Flash
+        writeups:
+          - kind: blog
+            title: GLM-5.3
+            url: https://z.ai/blog/glm-5.3
+          - kind: blog
+            title: GLM-5.3-Flash
+            url: https://z.ai/blog/glm-5.3-flash
+        related:
+          - title: GLM-5.3 and the spread of advanced cyber capabilities
+            author: Anthropic
+            url: https://www.anthropic.com/research/glm-5-3-and-the-spread-of-advanced-cyber-capabilities
+
+  - name: GLM Vision-Language
+    category: llm
+    releases:
+      - name: CogVLM
+        date: 2023-11
+        writeups:
+          - kind: report
+            title: "CogVLM: Visual Expert for Pretrained Language Models"
+            url: https://arxiv.org/abs/2311.03079
+      - name: GLM-4.5V and GLM-4.1V-Thinking
+        date: 2025-07
+        writeups:
+          - kind: report
+            title: "GLM-4.5V and GLM-4.1V-Thinking: Towards Versatile Multimodal Reasoning with Scalable Reinforcement Learning"
+            url: https://arxiv.org/abs/2507.01006
+      - name: GLM-5V-Turbo
+        date: 2026-04
+        writeups:
+          - kind: report
+            title: "GLM-5V-Turbo: Toward a Native Foundation Model for Multimodal Agents"
+            url: https://arxiv.org/abs/2604.26752
+
+  - name: CogVideoX (Video)
+    category: image-video
+    releases:
+      - name: CogVideoX
+        date: 2024-08
+        writeups:
+          - kind: report
+            title: "CogVideoX: Text-to-Video Diffusion Models with An Expert Transformer"
+            url: https://arxiv.org/abs/2408.06072

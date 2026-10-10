@@ -80,8 +80,27 @@
   th[aria-sort=ascending] button::after { content: " ↑"; opacity: 1; }
   th[aria-sort=descending] button::after { content: " ↓"; opacity: 1; }
   td.date { white-space: nowrap; font-variant-numeric: tabular-nums; color: var(--muted); }
-  td.title a { color: var(--text); text-decoration: none; font-weight: 500; }
+  td.title a { color: var(--muted); text-decoration: none; }
   td.title a:hover { color: var(--accent); text-decoration: underline; }
+  button.toggle {
+    font: inherit; font-weight: 600; color: var(--text); background: none; border: 0;
+    padding: 0; cursor: pointer; text-align: left;
+  }
+  button.toggle::before { content: "▸ "; color: var(--muted); display: inline-block; width: 1.1em; }
+  button.toggle[aria-expanded=true]::before { content: "▾ "; }
+  button.toggle:hover { color: var(--accent); }
+  .more { color: var(--muted); font-size: 11px; margin-left: 4px; }
+  tr.open td { border-bottom-color: transparent; }
+  tr.detail-row:hover { background: none; }
+  .details { display: flex; flex-wrap: wrap; gap: 8px 32px; padding: 0 0 8px 1.1em; }
+  .details .dsec { min-width: 220px; flex: 1 1 260px; }
+  .details h3 { font-size: 11px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--muted); margin: 0 0 4px; }
+  .details ul { margin: 0; padding: 0; list-style: none; }
+  .details li { margin: 2px 0; }
+  .details a { color: var(--accent) !important; }
+  .details p { flex-basis: 100%; margin: 0; }
+  .muted { color: var(--muted); }
+  .src { font-size: 12px; }
   .sub { color: var(--muted); font-size: 12px; margin-top: 2px; }
   .tag {
     display: inline-block; font-size: 11px; font-weight: 600; padding: 1px 7px;
@@ -90,7 +109,7 @@
   .tag.open { background: var(--open-bg); color: var(--open-fg); }
   .tag.closed { background: var(--closed-bg); color: var(--closed-fg); }
   .tag.unknown { background: var(--unknown-bg); color: var(--unknown-fg); }
-  .kind { font-size: 11px; color: var(--muted); border: 1px solid var(--border); border-radius: 4px; padding: 0 5px; margin-left: 6px; white-space: nowrap; }
+  .kind { font-size: 11px; color: var(--muted); border: 1px solid var(--border); border-radius: 4px; padding: 0 5px; white-space: nowrap; }
   .empty { padding: 32px; text-align: center; color: var(--muted); }
   footer { margin-top: 16px; color: var(--muted); font-size: 12px; }
 </style>
@@ -99,13 +118,13 @@
 <div class="wrap">
   <header>
     <h1>Model Tech Reports</h1>
-    <p>Technical reports for foundation models. Built from the
-      <a href="https://github.com/belambert/model-tech-reports">model-tech-reports</a> list.</p>
+    <p>Technical reports, blog posts, and model cards for foundation models.
+      Data lives in <a href="https://github.com/belambert/model-tech-reports">model-tech-reports</a>.</p>
   </header>
 
   <form class="filters" id="filters" onsubmit="return false">
     <label class="field grow"><span>Search</span>
-      <input type="search" id="q" placeholder="Title, company, family…" autocomplete="off">
+      <input type="search" id="q" placeholder="Model, title, company, author…" autocomplete="off">
     </label>
     <div class="field"><span>Weights</span>
       <div class="seg" id="openness" role="group" aria-label="Weights">
@@ -117,12 +136,13 @@
     </div>
     <label class="field"><span>Category</span><select id="category"></select></label>
     <label class="field"><span>Company</span><select id="company"></select></label>
+    <label class="field"><span>Write-up</span><select id="kind"></select></label>
     <div class="field"><span>Date</span>
       <div class="range">
         <select id="from" aria-label="From year"></select>–<select id="to" aria-label="To year"></select>
       </div>
     </div>
-    <label class="check"><input type="checkbox" id="reportsOnly"> Full reports only</label>
+    <label class="check"><input type="checkbox" id="hasWeights"> Has weights link</label>
     <button type="button" class="reset" id="reset">Reset</button>
   </form>
 
@@ -131,7 +151,7 @@
     <table>
       <thead><tr>
         <th data-key="date"><button type="button">Date</button></th>
-        <th data-key="title"><button type="button">Title</button></th>
+        <th data-key="name"><button type="button">Release</button></th>
         <th data-key="company"><button type="button">Company</button></th>
         <th data-key="family"><button type="button">Family</button></th>
         <th data-key="category"><button type="button">Category</button></th>
@@ -145,23 +165,36 @@
 
 <script>
 const DATA = /*__REPORTS_DATA__*/null;
-const entries = DATA.entries;
+const releases = DATA.releases;
+const CATEGORY_LABELS = DATA.categories;
+const KIND_LABELS = { report: "Report", blog: "Blog", "model-card": "Model card", docs: "Docs" };
 
 const $ = (id) => document.getElementById(id);
-const DEFAULTS = { q: "", openness: "", category: "", company: "", from: "", to: "", reportsOnly: false, sort: "date", dir: "desc" };
+const DEFAULTS = { q: "", openness: "", category: "", company: "", kind: "", from: "", to: "", hasWeights: false, sort: "date", dir: "desc" };
 const state = { ...DEFAULTS };
+const expanded = new Set();
 
 const uniq = (xs) => [...new Set(xs)].sort((a, b) => a.localeCompare(b));
-function fillSelect(el, values, allLabel) {
+function fillSelect(el, options, allLabel) {
   el.innerHTML = "";
   el.append(new Option(allLabel, ""));
-  for (const v of values) el.append(new Option(v, v));
+  for (const [value, label] of options) el.append(new Option(label, value));
 }
-const years = uniq(entries.map((e) => e.date.slice(0, 4)));
-fillSelect($("category"), uniq(entries.map((e) => e.category)), "All");
-fillSelect($("company"), uniq(entries.map((e) => e.company)), "All");
-fillSelect($("from"), years, "Any");
-fillSelect($("to"), years, "Any");
+const pairs = (xs) => xs.map((x) => [x, x]);
+const years = uniq(releases.map((r) => r.date.slice(0, 4)));
+fillSelect($("category"), Object.entries(CATEGORY_LABELS), "All");
+fillSelect($("company"), pairs(uniq(releases.map((r) => r.company))), "All");
+fillSelect($("kind"), Object.entries(KIND_LABELS), "Any");
+fillSelect($("from"), pairs(years), "Any");
+fillSelect($("to"), pairs(years), "Any");
+
+const key = (r) => `${r.source}|${r.name}|${r.date}`;
+const searchText = new Map(releases.map((r) => [r, [
+  r.name, r.company, r.family, CATEGORY_LABELS[r.category], r.note,
+  ...r.writeups.flatMap((w) => [w.title, w.arxiv]),
+  ...r.related.flatMap((x) => [x.title, x.author]),
+  ...r.weights,
+].join(" ").toLowerCase()]));
 
 // Persist filters in the URL so views can be shared.
 function readUrl() {
@@ -181,12 +214,8 @@ function writeUrl() {
 }
 
 function syncControls() {
-  $("q").value = state.q;
-  $("category").value = state.category;
-  $("company").value = state.company;
-  $("from").value = state.from;
-  $("to").value = state.to;
-  $("reportsOnly").checked = state.reportsOnly;
+  for (const id of ["q", "category", "company", "kind", "from", "to"]) $(id).value = state[id];
+  $("hasWeights").checked = state.hasWeights;
   for (const b of $("openness").querySelectorAll("button")) {
     b.setAttribute("aria-pressed", String(b.dataset.v === state.openness));
   }
@@ -196,26 +225,29 @@ function syncControls() {
   }
 }
 
-function matches(e) {
-  if (state.openness && e.openness !== state.openness) return false;
-  if (state.category && e.category !== state.category) return false;
-  if (state.company && e.company !== state.company) return false;
-  if (state.from && e.date.slice(0, 4) < state.from) return false;
-  if (state.to && e.date.slice(0, 4) > state.to) return false;
-  if (state.reportsOnly && e.kind !== "report") return false;
+function matches(r) {
+  if (state.openness && r.openness !== state.openness) return false;
+  if (state.category && r.category !== state.category) return false;
+  if (state.company && r.company !== state.company) return false;
+  if (state.kind && !r.writeups.some((w) => w.kind === state.kind)) return false;
+  if (state.hasWeights && !r.weights.length) return false;
+  if (state.from && r.date.slice(0, 4) < state.from) return false;
+  if (state.to && r.date.slice(0, 4) > state.to) return false;
   if (state.q) {
-    const hay = [e.title, e.company, e.family, e.category, e.note, e.arxiv].join(" ").toLowerCase();
+    const hay = searchText.get(r);
     if (!state.q.toLowerCase().split(/\s+/).every((t) => hay.includes(t))) return false;
   }
   return true;
 }
 
+function sortValue(r, k) {
+  return k === "category" ? CATEGORY_LABELS[r.category] : (r[k] || "").toString();
+}
 function compare(a, b) {
   const k = state.sort;
-  const x = (a[k] || "").toString(), y = (b[k] || "").toString();
-  let c = x.localeCompare(y);
+  let c = sortValue(a, k).localeCompare(sortValue(b, k), undefined, { numeric: true });
   if (c === 0 && k !== "date") c = b.date.localeCompare(a.date); // newest first within ties
-  if (c === 0) c = a.title.localeCompare(b.title);
+  if (c === 0) c = a.name.localeCompare(b.name);
   return state.dir === "asc" ? c : -c;
 }
 
@@ -225,36 +257,58 @@ function el(tag, attrs = {}, ...children) {
   n.append(...children.filter((c) => c != null));
   return n;
 }
+const link = (href, text) => el("a", { href, target: "_blank", rel: "noopener" }, text);
+const kindTag = (kind) => el("span", { class: "kind" }, KIND_LABELS[kind] || kind);
+const hfLabel = (url) => url.replace(/^https?:\/\/(www\.)?huggingface\.co\//, "").replace(/^https?:\/\//, "");
+
+function details(r) {
+  const sections = [];
+  const section = (title, items) => sections.push(el("div", { class: "dsec" }, el("h3", {}, title), el("ul", {}, ...items)));
+  section("Write-ups", r.writeups.map((w) => el("li", {}, kindTag(w.kind), " ", link(w.url, w.title))));
+  if (r.weights.length) section("Weights", r.weights.map((u) => el("li", {}, link(u, hfLabel(u)))));
+  if (r.related.length) section("Related", r.related.map((x) =>
+    el("li", {}, link(x.url, x.title), x.author ? el("span", { class: "muted" }, " — " + x.author) : null)));
+  return el("div", { class: "details" }, ...sections,
+    r.note ? el("p", { class: "muted" }, r.note) : null,
+    el("p", { class: "muted src" }, "Source: ", link(`https://github.com/belambert/model-tech-reports/blob/main/${r.source}`, r.source)));
+}
 
 function render() {
   syncControls();
   writeUrl();
-  const rows = entries.filter(matches).sort(compare);
+  const rows = releases.filter(matches).sort(compare);
   const body = $("rows");
   body.replaceChildren();
-  for (const e of rows) {
-    const title = el("td", { class: "title" },
-      el("a", { href: e.url, target: "_blank", rel: "noopener" }, e.title),
-      e.kind !== "report" ? el("span", { class: "kind" }, e.kind) : null,
-      e.note ? el("div", { class: "sub" }, e.note) : null);
-    body.append(el("tr", {},
-      el("td", { class: "date" }, e.date),
-      title,
-      el("td", {}, e.company),
-      el("td", {}, e.family || ""),
-      el("td", {}, e.category),
-      el("td", {}, el("span", { class: "tag " + e.openness }, e.openness))));
+  for (const r of rows) {
+    const k = key(r);
+    const open = expanded.has(k);
+    const [primary, ...rest] = r.writeups;
+    const toggle = el("button", { type: "button", class: "toggle", "aria-expanded": String(open), title: "Show details" }, r.name);
+    toggle.addEventListener("click", () => { open ? expanded.delete(k) : expanded.add(k); render(); });
+    const extras = rest.length + r.weights.length + r.related.length;
+    body.append(el("tr", { class: open ? "open" : "" },
+      el("td", { class: "date" }, r.date),
+      el("td", { class: "title" },
+        toggle,
+        el("div", { class: "sub" }, kindTag(primary.kind), " ", link(primary.url, primary.title),
+          extras ? el("span", { class: "more" }, ` +${extras}`) : null)),
+      el("td", {}, r.company),
+      el("td", {}, r.family),
+      el("td", {}, CATEGORY_LABELS[r.category]),
+      el("td", {}, el("span", { class: "tag " + r.openness }, r.openness))));
+    if (open) body.append(el("tr", { class: "detail-row" }, el("td", {}), el("td", { colspan: "5" }, details(r))));
   }
-  if (!rows.length) body.append(el("tr", {}, el("td", { colspan: "6", class: "empty" }, "No reports match these filters.")));
-  $("status").textContent = `Showing ${rows.length} of ${entries.length} reports`;
+  if (!rows.length) body.append(el("tr", {}, el("td", { colspan: "6", class: "empty" }, "No releases match these filters.")));
+  const nw = rows.reduce((n, r) => n + r.writeups.length, 0);
+  $("status").textContent = `Showing ${rows.length} of ${releases.length} releases (${nw} write-ups)`;
 }
 
 // Wire up controls.
 $("q").addEventListener("input", (ev) => { state.q = ev.target.value.trim(); render(); });
-for (const id of ["category", "company", "from", "to"]) {
+for (const id of ["category", "company", "kind", "from", "to"]) {
   $(id).addEventListener("change", (ev) => { state[id] = ev.target.value; render(); });
 }
-$("reportsOnly").addEventListener("change", (ev) => { state.reportsOnly = ev.target.checked; render(); });
+$("hasWeights").addEventListener("change", (ev) => { state.hasWeights = ev.target.checked; render(); });
 $("openness").addEventListener("click", (ev) => {
   const b = ev.target.closest("button");
   if (b) { state.openness = b.dataset.v; render(); }
@@ -267,9 +321,9 @@ for (const th of document.querySelectorAll("th[data-key]")) {
     render();
   });
 }
-$("reset").addEventListener("click", () => { Object.assign(state, DEFAULTS); render(); });
+$("reset").addEventListener("click", () => { Object.assign(state, DEFAULTS); expanded.clear(); render(); });
 
-$("footer").textContent = `Generated ${DATA.generated} · ${entries.length} entries`;
+$("footer").textContent = `Generated ${DATA.generated} · ${releases.length} releases`;
 readUrl();
 render();
 </script>

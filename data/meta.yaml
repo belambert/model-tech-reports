@@ -1,0 +1,106 @@
+company: Meta
+openness: open
+
+families:
+  - name: Llama
+    category: llm
+    releases:
+      - name: LLaMA
+        date: 2023-02
+        writeups:
+          - kind: report
+            title: "LLaMA: Open and Efficient Foundation Language Models"
+            url: https://arxiv.org/abs/2302.13971
+      - name: Llama 2
+        date: 2023-07
+        writeups:
+          - kind: report
+            title: "Llama 2: Open Foundation and Fine-Tuned Chat Models"
+            url: https://arxiv.org/abs/2307.09288
+      - name: Code Llama
+        date: 2023-08
+        writeups:
+          - kind: report
+            title: "Code Llama: Open Foundation Models for Code"
+            url: https://arxiv.org/abs/2308.12950
+      - name: Llama 3
+        date: 2024-07
+        writeups:
+          - kind: report
+            title: The Llama 3 Herd of Models
+            url: https://arxiv.org/abs/2407.21783
+      - name: Llama 4
+        date: 2025-04
+        writeups:
+          - kind: blog
+            title: The Llama 4 herd
+            url: https://ai.meta.com/blog/llama-4-multimodal-intelligence/
+
+  - name: Chameleon
+    category: llm
+    releases:
+      - name: Chameleon
+        date: 2024-05
+        writeups:
+          - kind: report
+            title: "Chameleon: Mixed-Modal Early-Fusion Foundation Models"
+            url: https://arxiv.org/abs/2405.09818
+
+  - name: V-JEPA
+    category: world-model
+    releases:
+      - name: V-JEPA 2
+        date: 2025-06
+        writeups:
+          - kind: report
+            title: "V-JEPA 2: Self-Supervised Video Models Enable Understanding, Prediction and Planning"
+            url: https://arxiv.org/abs/2506.09985
+
+  - name: Movie Gen
+    category: image-video
+    openness: closed
+    releases:
+      - name: Movie Gen
+        date: 2024-10
+        writeups:
+          - kind: report
+            title: "Movie Gen: A Cast of Media Foundation Models"
+            url: https://arxiv.org/abs/2410.13720
+
+  - name: "wav2vec, MMS, and Omnilingual ASR"
+    category: speech
+    releases:
+      - name: wav2vec 2.0
+        date: 2020-06
+        writeups:
+          - kind: report
+            title: "wav2vec 2.0: A Framework for Self-Supervised Learning of Speech Representations"
+            url: https://arxiv.org/abs/2006.11477
+      - name: MMS
+        date: 2023-05
+        writeups:
+          - kind: report
+            title: "Scaling Speech Technology to 1,000+ Languages"
+            url: https://arxiv.org/abs/2305.13516
+      - name: Omnilingual ASR
+        date: 2025-11
+        writeups:
+          - kind: report
+            title: "Omnilingual ASR: Open-Source Multilingual Speech Recognition for 1600+ Languages"
+            url: https://arxiv.org/abs/2511.09690
+
+  - name: Seamless (Speech Translation)
+    category: speech
+    releases:
+      - name: SeamlessM4T
+        date: 2023-08
+        writeups:
+          - kind: report
+            title: "SeamlessM4T: Massively Multilingual & Multimodal Machine Translation"
+            url: https://arxiv.org/abs/2308.11596
+      - name: Seamless
+        date: 2023-12
+        writeups:
+          - kind: report
+            title: "Seamless: Multilingual Expressive and Streaming Speech Translation"
+            url: https://arxiv.org/abs/2312.05187

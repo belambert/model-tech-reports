@@ -1,0 +1,99 @@
+company: OpenAI
+openness: closed
+
+families:
+  - name: GPT
+    category: llm
+    releases:
+      - name: GPT-1
+        date: 2018-06
+        writeups:
+          - kind: report
+            title: Improving Language Understanding by Generative Pre-Training
+            url: https://cdn.openai.com/research-covers/language-unsupervised/language_understanding_paper.pdf
+      - name: GPT-2
+        date: 2019-02
+        writeups:
+          - kind: report
+            title: Language Models are Unsupervised Multitask Learners
+            url: https://cdn.openai.com/better-language-models/language_models_are_unsupervised_multitask_learners.pdf
+      - name: GPT-3
+        date: 2020-05
+        writeups:
+          - kind: report
+            title: Language Models are Few-Shot Learners
+            url: https://arxiv.org/abs/2005.14165
+      - name: InstructGPT
+        date: 2022-03
+        writeups:
+          - kind: report
+            title: Training language models to follow instructions with human feedback
+            url: https://arxiv.org/abs/2203.02155
+      - name: GPT-4
+        date: 2023-03
+        writeups:
+          - kind: report
+            title: GPT-4 Technical Report
+            url: https://arxiv.org/abs/2303.08774
+      - name: GPT-4o
+        date: 2024-10
+        writeups:
+          - kind: report
+            title: GPT-4o System Card
+            url: https://arxiv.org/abs/2410.21276
+      - name: OpenAI o1
+        date: 2024-12
+        writeups:
+          - kind: report
+            title: OpenAI o1 System Card
+            url: https://arxiv.org/abs/2412.16720
+      - name: GPT-5
+        date: 2025-08
+        writeups:
+          - kind: report
+            title: OpenAI GPT-5 System Card
+            url: https://arxiv.org/abs/2601.03267
+
+  - name: gpt-oss
+    category: llm
+    openness: open
+    releases:
+      - name: gpt-oss
+        date: 2025-08
+        writeups:
+          - kind: report
+            title: "gpt-oss-120b & gpt-oss-20b Model Card"
+            url: https://arxiv.org/abs/2508.10925
+
+  - name: DALL·E and Sora
+    category: image-video
+    releases:
+      - name: DALL·E
+        date: 2021-02
+        writeups:
+          - kind: report
+            title: Zero-Shot Text-to-Image Generation
+            url: https://arxiv.org/abs/2102.12092
+      - name: DALL·E 2
+        date: 2022-04
+        writeups:
+          - kind: report
+            title: Hierarchical Text-Conditional Image Generation with CLIP Latents
+            url: https://arxiv.org/abs/2204.06125
+      - name: Sora
+        date: 2024-02
+        writeups:
+          - kind: blog
+            title: Video generation models as world simulators
+            url: https://openai.com/index/video-generation-models-as-world-simulators/
+
+  - name: Whisper
+    category: speech
+    openness: open
+    releases:
+      - name: Whisper
+        date: 2022-12
+        writeups:
+          - kind: report
+            title: Robust Speech Recognition via Large-Scale Weak Supervision
+            url: https://arxiv.org/abs/2212.04356

@@ -1,22 +1,15 @@
 #!/usr/bin/env python3
-"""Build a sortable, filterable web page from the report list pages.
+"""Build the reports web page from the YAML files in data/.
 
-Parses each category page (llms.md, etc.) into structured records, validates
-them, and writes:
+Each data/<company>.yaml file lists a company's model families and their
+releases. The script validates every file, then writes:
 
-    <out>/reports.json   all entries as JSON
-    <out>/index.html     site/index.html with the entries embedded
+    <out>/reports.json   all releases as JSON
+    <out>/index.html     site/index.html with the releases embedded
 
-Openness (open/closed) is inferred from the markdown itself:
+Openness and category are inherited: release > family > company.
 
-  1. A family heading ending in "(closed)" or "(open-weight)" wins.
-  2. Otherwise the company's section in the page intro decides: companies
-     listed after "**Open-weight labs**" are open, after "**Closed ...**"
-     are closed.
-  3. Otherwise the entry is "unknown".
-
-Exits non-zero if an entry line is malformed, so CI catches formatting
-mistakes.
+Exits non-zero on any validation error, so CI catches bad data.
 
 Usage: python3 scripts/build_site.py [--out _site]
 """
@@ -28,134 +21,178 @@ import sys
 from datetime import datetime, timezone
 from pathlib import Path
 
+import yaml
+
 ROOT = Path(__file__).resolve().parent.parent
-PAGES = [
-    "llms.md",
-    "vla-and-world-models.md",
-    "image-and-video.md",
-    "speech-and-audio.md",
-]
+DATA_DIR = ROOT / "data"
 TEMPLATE = ROOT / "site" / "index.html"
 DATA_PLACEHOLDER = "/*__REPORTS_DATA__*/null"
 
-ENTRY_RE = re.compile(
-    r"^- (?P<date>\d{4}-\d{2}) · \[(?P<title>.+?)\]\((?P<url>https?://[^\s)]+)\)(?P<rest>.*)$"
-)
-KIND_RE = re.compile(r"\*\((?P<kind>[^)]+)\)\*")
-LINK_RE = re.compile(r"\[([^\]]+)\]\([^)]+\)")
-LAB_LINK_RE = re.compile(r"\[([^\]]+)\]\(#[^)]*\)")
+CATEGORIES = {
+    "llm": "LLMs and VLMs",
+    "vla": "VLAs",
+    "world-model": "World Models",
+    "image-video": "Image and Video",
+    "speech": "Speech and Audio",
+}
+OPENNESS = {"open", "closed", "unknown"}
+WRITEUP_KINDS = {"report", "blog", "model-card", "docs"}
+
+COMPANY_KEYS = {"company", "openness", "families"}
+FAMILY_KEYS = {"name", "category", "openness", "releases"}
+RELEASE_KEYS = {"name", "date", "openness", "category", "note", "weights", "writeups", "related"}
+WRITEUP_KEYS = {"kind", "title", "url"}
+RELATED_KEYS = {"title", "author", "url"}
+
+DATE_RE = re.compile(r"^\d{4}-(0[1-9]|1[0-2])$")
+URL_RE = re.compile(r"^https?://\S+$")
 ARXIV_RE = re.compile(r"arxiv\.org/(?:abs|pdf)/(\d{4}\.\d{4,5})")
-FAMILY_OPENNESS_RE = re.compile(r"\s*\((closed|open-weight|open)\)\s*$", re.I)
 
 
-class ParseError(Exception):
-    pass
+class Validator:
+    def __init__(self):
+        self.errors = []
+
+    def error(self, where, msg):
+        self.errors.append(f"{where}: {msg}")
+
+    def mapping(self, obj, where, allowed, required):
+        if not isinstance(obj, dict):
+            self.error(where, f"expected a mapping, got {type(obj).__name__}")
+            return False
+        for k in obj.keys() - allowed:
+            self.error(where, f"unknown key '{k}'")
+        for k in required - obj.keys():
+            self.error(where, f"missing required key '{k}'")
+        return True
+
+    def string(self, obj, key, where, required=True):
+        v = obj.get(key)
+        if v is None:
+            return None if not required else self.error(where, f"'{key}' is required")
+        if not isinstance(v, str) or not v.strip():
+            self.error(where, f"'{key}' must be a non-empty string")
+            return None
+        return v
+
+    def enum(self, obj, key, allowed, where):
+        v = obj.get(key)
+        if v is not None and v not in allowed:
+            self.error(where, f"'{key}' must be one of {sorted(allowed)}, got {v!r}")
+            return None
+        return v
+
+    def url(self, v, where):
+        if not isinstance(v, str) or not URL_RE.match(v):
+            self.error(where, f"invalid URL {v!r}")
+            return None
+        return v
+
+    def items(self, obj, key, where, required=False):
+        v = obj.get(key)
+        if v is None:
+            if required:
+                self.error(where, f"'{key}' is required")
+            return []
+        if not isinstance(v, list) or (required and not v):
+            self.error(where, f"'{key}' must be a {'non-empty ' if required else ''}list")
+            return []
+        return v
 
 
-def parse_page(path):
-    """Return (page_title, entries) for one category page."""
-    lines = path.read_text(encoding="utf-8").splitlines()
-    page_title = None
-    lab_openness = {}  # company name -> "open" | "closed"
-    intro_mode = None
-    in_body = False
-    company = family = None
-    family_openness = None
-    entries = []
-    errors = []
+def load_file(path, v):
+    """Validate one company file and return its releases as flat records."""
+    rel_path = path.relative_to(ROOT).as_posix()
+    try:
+        doc = yaml.safe_load(path.read_text(encoding="utf-8"))
+    except yaml.YAMLError as e:
+        v.error(rel_path, f"invalid YAML: {e}")
+        return []
+    if not v.mapping(doc, rel_path, COMPANY_KEYS, COMPANY_KEYS):
+        return []
 
-    for lineno, line in enumerate(lines, 1):
-        if line.startswith("# ") and page_title is None:
-            page_title = line[2:].strip()
+    company = v.string(doc, "company", rel_path)
+    company_open = v.enum(doc, "openness", OPENNESS, rel_path)
+    records = []
+    for fi, fam in enumerate(v.items(doc, "families", rel_path, required=True)):
+        fwhere = f"{rel_path}: families[{fi}]"
+        if not v.mapping(fam, fwhere, FAMILY_KEYS, {"name", "category", "releases"}):
             continue
+        family = v.string(fam, "name", fwhere)
+        fwhere = f"{rel_path}: {family}"
+        family_cat = v.enum(fam, "category", CATEGORIES, fwhere)
+        family_open = v.enum(fam, "openness", OPENNESS, fwhere)
 
-        if not in_body:
-            # Intro: collect the open/closed lab lists until the first "---".
-            if line.strip() == "---":
-                in_body = True
-            elif line.startswith("**Open"):
-                intro_mode = "open"
-            elif line.startswith("**Closed"):
-                intro_mode = "closed"
-            elif intro_mode:
-                for name in LAB_LINK_RE.findall(line):
-                    lab_openness[name] = intro_mode
-            continue
-
-        if line.startswith("## "):
-            company = line[3:].strip()
-            family = None
-            family_openness = None
-        elif line.startswith("### "):
-            heading = line[4:].strip()
-            m = FAMILY_OPENNESS_RE.search(heading)
-            family_openness = None
-            if m:
-                family_openness = "closed" if m.group(1).lower() == "closed" else "open"
-                heading = heading[: m.start()].strip()
-            family = heading
-        elif re.match(r"^- \d", line):
-            m = ENTRY_RE.match(line)
-            if not m:
-                errors.append(f"{path.name}:{lineno}: malformed entry: {line}")
+        for ri, rel in enumerate(v.items(fam, "releases", fwhere, required=True)):
+            rwhere = f"{fwhere}: releases[{ri}]"
+            if not v.mapping(rel, rwhere, RELEASE_KEYS, {"name", "date", "writeups"}):
                 continue
-            date = m["date"]
-            month = int(date[5:])
-            if not 1 <= month <= 12:
-                errors.append(f"{path.name}:{lineno}: bad month in date {date}")
-                continue
-            if company is None:
-                errors.append(f"{path.name}:{lineno}: entry outside a company section")
-                continue
+            name = v.string(rel, "name", rwhere)
+            rwhere = f"{fwhere}: {name}"
+            date = rel.get("date")
+            if not isinstance(date, str) or not DATE_RE.match(date):
+                v.error(rwhere, f"'date' must be YYYY-MM, got {date!r}")
 
-            rest = m["rest"]
-            kind_m = KIND_RE.search(rest)
-            kind = kind_m["kind"].strip() if kind_m else "report"
-            if kind_m:
-                rest = rest[: kind_m.start()] + rest[kind_m.end() :]
-            note = LINK_RE.sub(r"\1", rest).strip(" .·")
-            if re.fullmatch(r"\([^()]*\)", note):  # "(GPT-1)" -> "GPT-1"
-                note = note[1:-1]
+            writeups = []
+            for wi, w in enumerate(v.items(rel, "writeups", rwhere, required=True)):
+                wwhere = f"{rwhere}: writeups[{wi}]"
+                if not v.mapping(w, wwhere, WRITEUP_KEYS, WRITEUP_KEYS):
+                    continue
+                v.enum(w, "kind", WRITEUP_KINDS, wwhere)
+                v.string(w, "title", wwhere)
+                v.url(w.get("url"), wwhere)
+                arxiv = ARXIV_RE.search(w.get("url") or "")
+                writeups.append({**w, "arxiv": arxiv.group(1) if arxiv else None})
 
-            openness = family_openness or lab_openness.get(company) or "unknown"
-            arxiv = ARXIV_RE.search(m["url"])
-            entries.append(
+            related = []
+            for xi, x in enumerate(v.items(rel, "related", rwhere)):
+                xwhere = f"{rwhere}: related[{xi}]"
+                if not v.mapping(x, xwhere, RELATED_KEYS, {"title", "url"}):
+                    continue
+                v.string(x, "title", xwhere)
+                v.string(x, "author", xwhere, required=False)
+                v.url(x.get("url"), xwhere)
+                related.append(x)
+
+            weights = [u for u in v.items(rel, "weights", rwhere) if v.url(u, f"{rwhere}: weights")]
+
+            records.append(
                 {
+                    "name": name,
                     "date": date,
-                    "title": m["title"],
-                    "url": m["url"],
-                    "arxiv": arxiv.group(1) if arxiv else None,
-                    "kind": kind,
-                    "note": note or None,
-                    "openness": openness,
                     "company": company,
                     "family": family,
-                    "category": page_title,
-                    "source": f"{path.name}#L{lineno}",
+                    "category": v.enum(rel, "category", CATEGORIES, rwhere) or family_cat,
+                    "openness": v.enum(rel, "openness", OPENNESS, rwhere) or family_open or company_open,
+                    "note": v.string(rel, "note", rwhere, required=False),
+                    "writeups": writeups,
+                    "weights": weights,
+                    "related": related,
+                    "source": rel_path,
                 }
             )
-
-    if errors:
-        raise ParseError("\n".join(errors))
-    return page_title, entries
+    return records
 
 
-def load_entries():
-    """Load all entries from the local markdown pages.
+def load_releases():
+    """Load and validate every data file. Raises ValueError listing all errors."""
+    v = Validator()
+    records = []
+    for path in sorted(DATA_DIR.glob("*.yaml")):
+        records.extend(load_file(path, v))
 
-    This is the single data-source hook: swap or extend it later (e.g. to
-    enrich entries with arXiv metadata) without touching the page.
-    """
-    entries, errors = [], []
-    for name in PAGES:
-        try:
-            _, page_entries = parse_page(ROOT / name)
-            entries.extend(page_entries)
-        except ParseError as e:
-            errors.append(str(e))
-    if errors:
-        raise ParseError("\n".join(errors))
-    return entries
+    # The same write-up URL should never appear twice.
+    seen = {}
+    for r in records:
+        for w in r["writeups"]:
+            url = w.get("url")
+            if url in seen:
+                v.error(r["source"], f"{r['name']}: write-up URL also used by {seen[url]}: {url}")
+            seen[url] = f"{r['source']} ({r['name']})"
+
+    if v.errors:
+        raise ValueError("\n".join(v.errors))
+    return records
 
 
 def main():
@@ -164,14 +201,15 @@ def main():
     args = parser.parse_args()
 
     try:
-        entries = load_entries()
-    except ParseError as e:
+        releases = load_releases()
+    except ValueError as e:
         print(e, file=sys.stderr)
         return 1
 
     data = {
         "generated": datetime.now(timezone.utc).strftime("%Y-%m-%d"),
-        "entries": entries,
+        "categories": CATEGORIES,
+        "releases": releases,
     }
     out = Path(args.out)
     out.mkdir(parents=True, exist_ok=True)
@@ -186,10 +224,11 @@ def main():
     (out / "index.html").write_text(template.replace(DATA_PLACEHOLDER, embedded), encoding="utf-8")
 
     counts = {}
-    for e in entries:
-        counts[e["openness"]] = counts.get(e["openness"], 0) + 1
-    summary = ", ".join(f"{v} {k}" for k, v in sorted(counts.items()))
-    print(f"Wrote {len(entries)} entries ({summary}) to {out}/")
+    for r in releases:
+        counts[r["openness"]] = counts.get(r["openness"], 0) + 1
+    summary = ", ".join(f"{n} {k}" for k, n in sorted(counts.items()))
+    n_writeups = sum(len(r["writeups"]) for r in releases)
+    print(f"Wrote {len(releases)} releases, {n_writeups} write-ups ({summary}) to {out}/")
     return 0
 
 

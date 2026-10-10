@@ -1,0 +1,16 @@
+company: Poolside
+openness: open
+
+families:
+  - name: Laguna
+    category: llm
+    releases:
+      - name: Laguna M.1 and XS.2
+        date: 2026-05
+        writeups:
+          - kind: report
+            title: Laguna M.1/XS.2 Technical Report
+            url: https://arxiv.org/abs/2605.27605
+          - kind: blog
+            title: Introducing Laguna XS.2 and Laguna M.1
+            url: https://poolside.ai/blog/introducing-laguna-xs2-m1

@@ -1,0 +1,60 @@
+company: Mistral AI
+openness: open
+
+families:
+  - name: Mistral
+    category: llm
+    releases:
+      - name: Mistral 7B
+        date: 2023-10
+        writeups:
+          - kind: report
+            title: Mistral 7B
+            url: https://arxiv.org/abs/2310.06825
+      - name: Mixtral 8x7B
+        date: 2024-01
+        writeups:
+          - kind: report
+            title: Mixtral of Experts
+            url: https://arxiv.org/abs/2401.04088
+      - name: Pixtral 12B
+        date: 2024-10
+        writeups:
+          - kind: report
+            title: Pixtral 12B
+            url: https://arxiv.org/abs/2410.07073
+      - name: Magistral
+        date: 2025-06
+        writeups:
+          - kind: report
+            title: Magistral
+            url: https://arxiv.org/abs/2506.10910
+      - name: Mistral 3
+        date: 2025-12
+        note: This covers Mistral Large 3 and Ministral 3
+        writeups:
+          - kind: blog
+            title: Introducing Mistral 3
+            url: https://mistral.ai/news/mistral-3/
+      - name: Ministral 3
+        date: 2026-01
+        writeups:
+          - kind: report
+            title: Ministral 3
+            url: https://arxiv.org/abs/2601.08584
+
+  - name: Voxtral
+    category: speech
+    releases:
+      - name: Voxtral
+        date: 2025-07
+        writeups:
+          - kind: report
+            title: Voxtral
+            url: https://arxiv.org/abs/2507.13264
+      - name: Voxtral Realtime
+        date: 2026-02
+        writeups:
+          - kind: report
+            title: Voxtral Realtime
+            url: https://arxiv.org/abs/2602.11298

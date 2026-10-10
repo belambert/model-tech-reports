@@ -1,0 +1,13 @@
+company: Kyutai
+openness: open
+
+families:
+  - name: Kyutai STT
+    category: speech
+    releases:
+      - name: Kyutai STT
+        date: 2025-09
+        writeups:
+          - kind: report
+            title: Streaming Sequence-to-Sequence Learning with Delayed Streams Modeling
+            url: https://arxiv.org/abs/2509.08753

@@ -1,0 +1,25 @@
+company: MiniMax
+openness: open
+
+families:
+  - name: MiniMax
+    category: llm
+    releases:
+      - name: MiniMax-01
+        date: 2025-01
+        writeups:
+          - kind: report
+            title: "MiniMax-01: Scaling Foundation Models with Lightning Attention"
+            url: https://arxiv.org/abs/2501.08313
+      - name: MiniMax-M1
+        date: 2025-06
+        writeups:
+          - kind: report
+            title: "MiniMax-M1: Scaling Test-Time Compute Efficiently with Lightning Attention"
+            url: https://arxiv.org/abs/2506.13585
+      - name: MiniMax-M2
+        date: 2026-05
+        writeups:
+          - kind: report
+            title: "The MiniMax-M2 Series: Mini Activations Unleashing Max Real-World Intelligence"
+            url: https://arxiv.org/abs/2605.26494

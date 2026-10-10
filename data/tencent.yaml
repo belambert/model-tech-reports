@@ -1,0 +1,33 @@
+company: Tencent
+openness: open
+
+families:
+  - name: Hunyuan
+    category: llm
+    releases:
+      - name: Hunyuan-Large
+        date: 2024-11
+        writeups:
+          - kind: report
+            title: "Hunyuan-Large: An Open-Source MoE Model with 52 Billion Activated Parameters by Tencent"
+            url: https://arxiv.org/abs/2411.02265
+
+  - name: HunyuanWorld
+    category: world-model
+    releases:
+      - name: HunyuanWorld 1.0
+        date: 2025-07
+        writeups:
+          - kind: report
+            title: "HunyuanWorld 1.0: Generating Immersive, Explorable, and Interactive 3D Worlds from Words or Pixels"
+            url: https://arxiv.org/abs/2507.21809
+
+  - name: HunyuanVideo
+    category: image-video
+    releases:
+      - name: HunyuanVideo
+        date: 2024-12
+        writeups:
+          - kind: report
+            title: "HunyuanVideo: A Systematic Framework For Large Video Generative Models"
+            url: https://arxiv.org/abs/2412.03603

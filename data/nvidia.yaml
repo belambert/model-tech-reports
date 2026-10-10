@@ -1,0 +1,170 @@
+company: NVIDIA
+openness: open
+
+families:
+  - name: Nemotron LLMs
+    category: llm
+    releases:
+      - name: Nemotron-4 15B
+        date: 2024-02
+        writeups:
+          - kind: report
+            title: Nemotron-4 15B Technical Report
+            url: https://arxiv.org/abs/2402.16819
+      - name: Nemotron-4 340B
+        date: 2024-06
+        writeups:
+          - kind: report
+            title: Nemotron-4 340B Technical Report
+            url: https://arxiv.org/abs/2406.11704
+      - name: Minitron
+        date: 2024-07
+        writeups:
+          - kind: report
+            title: Compact Language Models via Pruning and Knowledge Distillation
+            url: https://arxiv.org/abs/2407.14679
+      - name: Nemotron-H
+        date: 2025-04
+        writeups:
+          - kind: report
+            title: "Nemotron-H: A Family of Accurate and Efficient Hybrid Mamba-Transformer Models"
+            url: https://arxiv.org/abs/2504.03624
+      - name: Llama-Nemotron
+        date: 2025-05
+        writeups:
+          - kind: report
+            title: "Llama-Nemotron: Efficient Reasoning Models"
+            url: https://arxiv.org/abs/2505.00949
+      - name: Nemotron Nano 2
+        date: 2025-08
+        writeups:
+          - kind: report
+            title: "NVIDIA Nemotron Nano 2: An Accurate and Efficient Hybrid Mamba-Transformer Reasoning Model"
+            url: https://arxiv.org/abs/2508.14444
+      - name: Nemotron 3
+        date: 2025-12
+        writeups:
+          - kind: report
+            title: "NVIDIA Nemotron 3: Efficient and Open Intelligence"
+            url: https://arxiv.org/abs/2512.20856
+      - name: Nemotron 3 Super
+        date: 2026-04
+        writeups:
+          - kind: report
+            title: "Nemotron 3 Super: Open, Efficient Mixture-of-Experts Hybrid Mamba-Transformer Model for Agentic Reasoning"
+            url: https://arxiv.org/abs/2604.12374
+
+  - name: Nemotron Multimodal
+    category: llm
+    releases:
+      - name: NVLM
+        date: 2024-09
+        writeups:
+          - kind: report
+            title: "NVLM: Open Frontier-Class Multimodal LLMs"
+            url: https://arxiv.org/abs/2409.11402
+      - name: Nemotron 3 Nano Omni
+        date: 2026-04
+        writeups:
+          - kind: report
+            title: "Nemotron 3 Nano Omni: Efficient and Open Multimodal Intelligence"
+            url: https://arxiv.org/abs/2604.24954
+
+  - name: Cosmos
+    category: world-model
+    releases:
+      - name: Cosmos
+        date: 2025-01
+        writeups:
+          - kind: report
+            title: Cosmos World Foundation Model Platform for Physical AI
+            url: https://arxiv.org/abs/2501.03575
+      - name: Cosmos-Reason1
+        date: 2025-03
+        writeups:
+          - kind: report
+            title: "Cosmos-Reason1: From Physical Common Sense To Embodied Reasoning"
+            url: https://arxiv.org/abs/2503.15558
+      - name: Cosmos-Predict2.5
+        date: 2025-10
+        writeups:
+          - kind: report
+            title: World Simulation with Video Foundation Models for Physical AI
+            url: https://arxiv.org/abs/2511.00062
+      - name: Cosmos 3
+        date: 2026-06
+        writeups:
+          - kind: report
+            title: "Cosmos 3: Omnimodal World Models for Physical AI"
+            url: https://arxiv.org/abs/2606.02800
+
+  - name: GR00T
+    category: vla
+    releases:
+      - name: GR00T N1
+        date: 2025-03
+        writeups:
+          - kind: report
+            title: "GR00T N1: An Open Foundation Model for Generalist Humanoid Robots"
+            url: https://arxiv.org/abs/2503.14734
+
+  - name: FastConformer and TDT (Architecture)
+    category: speech
+    releases:
+      - name: TDT
+        date: 2023-04
+        writeups:
+          - kind: report
+            title: Efficient Sequence Transduction by Jointly Predicting Tokens and Durations
+            url: https://arxiv.org/abs/2304.06795
+      - name: Fast Conformer
+        date: 2023-05
+        writeups:
+          - kind: report
+            title: Fast Conformer with Linearly Scalable Attention for Efficient Speech Recognition
+            url: https://arxiv.org/abs/2305.05084
+
+  - name: Parakeet and Canary
+    category: speech
+    releases:
+      - name: Canary-1B
+        date: 2024-06
+        writeups:
+          - kind: report
+            title: "Less is More: Accurate Speech Recognition & Translation without Web-Scale Data"
+            url: https://arxiv.org/abs/2406.19674
+      - name: parakeet-tdt-0.6b-v2
+        date: 2025-05
+        writeups:
+          - kind: model-card
+            title: parakeet-tdt-0.6b-v2
+            url: https://huggingface.co/nvidia/parakeet-tdt-0.6b-v2
+      - name: Granary
+        date: 2025-05
+        note: This is the training data for the v3 models
+        writeups:
+          - kind: report
+            title: "Granary: Speech Recognition and Translation Dataset in 25 European Languages"
+            url: https://arxiv.org/abs/2505.13404
+      - name: Canary-1B-v2 and Parakeet-TDT-0.6B-v3
+        date: 2025-09
+        writeups:
+          - kind: report
+            title: "Canary-1B-v2 & Parakeet-TDT-0.6B-v3: Efficient and High-Performance Models for Multilingual ASR and AST"
+            url: https://arxiv.org/abs/2509.14128
+
+  - name: Nemotron Speech (Streaming ASR)
+    category: speech
+    releases:
+      - name: nemotron-speech-streaming-en-0.6b
+        date: 2025-12
+        writeups:
+          - kind: model-card
+            title: nemotron-speech-streaming-en-0.6b
+            url: https://huggingface.co/nvidia/nemotron-speech-streaming-en-0.6b
+      - name: nemotron-3.5-asr-streaming-0.6b
+        date: 2026-05
+        writeups:
+          - kind: model-card
+            title: nemotron-3.5-asr-streaming-0.6b
+            url: https://huggingface.co/nvidia/nemotron-3.5-asr-streaming-0.6b

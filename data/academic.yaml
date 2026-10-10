@@ -1,0 +1,39 @@
+company: Academic
+openness: open
+
+families:
+  - name: Octo and OpenVLA
+    category: vla
+    releases:
+      - name: Octo
+        date: 2024-05
+        writeups:
+          - kind: report
+            title: "Octo: An Open-Source Generalist Robot Policy"
+            url: https://arxiv.org/abs/2405.12213
+      - name: OpenVLA
+        date: 2024-06
+        writeups:
+          - kind: report
+            title: "OpenVLA: An Open-Source Vision-Language-Action Model"
+            url: https://arxiv.org/abs/2406.09246
+
+  - name: OWSM
+    category: speech
+    releases:
+      - name: OWSM
+        date: 2023-09
+        writeups:
+          - kind: report
+            title: Reproducing Whisper-Style Training Using an Open-Source Toolkit and Publicly Available Data
+            url: https://arxiv.org/abs/2309.13876
+
+  - name: Benchmarks
+    category: speech
+    releases:
+      - name: Open ASR Leaderboard
+        date: 2025-10
+        writeups:
+          - kind: report
+            title: "Open ASR Leaderboard: Towards Reproducible and Transparent Multilingual and Long-Form Speech Recognition Evaluation"
+            url: https://arxiv.org/abs/2510.06961
