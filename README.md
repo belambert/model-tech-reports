@@ -6,7 +6,8 @@ covers the earlier foundational reports from the closed frontier labs.
 
 **[Browse all releases in a sortable, filterable table →](https://belambert.github.io/model-tech-reports/)**
 
-Or jump straight to a category: [LLMs and VLMs](https://belambert.github.io/model-tech-reports/llm.html) · [VLAs](https://belambert.github.io/model-tech-reports/vla.html) · [World Models](https://belambert.github.io/model-tech-reports/world-model.html) · [Image and Video](https://belambert.github.io/model-tech-reports/image-video.html) · [Speech and Audio](https://belambert.github.io/model-tech-reports/speech.html)
+Or jump straight to a category: [LLMs and VLMs](https://belambert.github.io/model-tech-reports/llm.html) · [VLAs](https://belambert.github.io/model-tech-reports/vla.html) · [World Models](https://belambert.github.io/model-tech-reports/world-model.html) ·
+[Image and Video](https://belambert.github.io/model-tech-reports/image-video.html) · [Speech and Audio](https://belambert.github.io/model-tech-reports/speech.html)
 
 ## Scope
 
