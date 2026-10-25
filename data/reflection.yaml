@@ -1,0 +1,19 @@
+company: Reflection AI
+openness: open
+
+families:
+  - name: Beam
+    category: llm
+    releases:
+      - name: Beam 1.0
+        date: 2026-10
+        note: Open-weight MoE of about 501B total parameters (23B active), Apache 2.0 license; the technical report is still to come
+        weights:
+          - https://huggingface.co/reflection/Beam-1.0-501B-A23B
+        writeups:
+          - kind: blog
+            title: "Introducing Beam: Reflection's 501B open-weight model"
+            url: https://www.reflection.ai/blog/introducing-beam
+          - kind: model-card
+            title: Beam Model Card
+            url: https://reflection.ai/beam-model-card

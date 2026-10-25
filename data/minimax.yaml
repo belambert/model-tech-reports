@@ -57,3 +57,30 @@ families:
           - kind: model-card
             title: MiniMax-M2.7
             url: https://huggingface.co/MiniMaxAI/MiniMax-M2.7
+      - name: MiniMax-M3
+        date: 2026-06
+        note: "Open-weight natively multimodal MoE, about 428B total parameters (23B active); license: the MiniMax Community License"
+        weights:
+          - https://huggingface.co/MiniMaxAI/MiniMax-M3
+        writeups:
+          - kind: report
+            title: MiniMax Sparse Attention
+            url: https://arxiv.org/abs/2606.13392
+          - kind: blog
+            title: "MiniMax M3: Frontier Coding, 1M Context, Native Multimodality — All in One Model"
+            url: https://www.minimax.io/blog/minimax-m3
+          - kind: model-card
+            title: MiniMax-M3
+            url: https://huggingface.co/MiniMaxAI/MiniMax-M3
+      - name: MiniMax-M3.1-Flash
+        date: 2026-10
+        note: Open-weight M3 update with sparse attention throughout, quantization-aware training, and DSpark speculative decoding; MiniMax Community License
+        weights:
+          - https://huggingface.co/MiniMaxAI/MiniMax-M3.1-Flash
+        writeups:
+          - kind: blog
+            title: "MiniMax M3.1 Flash: Redefining Agent Performance and Cost"
+            url: https://www.minimax.io/blog/minimax-m31f
+          - kind: model-card
+            title: MiniMax-M3.1-Flash
+            url: https://huggingface.co/MiniMaxAI/MiniMax-M3.1-Flash

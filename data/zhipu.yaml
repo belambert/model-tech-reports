@@ -45,6 +45,18 @@ families:
           - title: "IndexCache: Accelerating Sparse Attention via Cross-Layer Index Reuse"
             author: Zhipu AI and Tsinghua University
             url: https://arxiv.org/abs/2603.12201
+      - name: GLM-5.1
+        date: 2026-04
+        note: Open-weight MoE of about 754B total parameters, MIT license
+        weights:
+          - https://huggingface.co/zai-org/GLM-5.1
+        writeups:
+          - kind: blog
+            title: "GLM-5.1: Towards Long-Horizon Tasks"
+            url: https://z.ai/blog/glm-5.1
+          - kind: docs
+            title: GLM-5.1 Overview
+            url: https://docs.z.ai/guides/llm/glm-5.1
       - name: GLM-5.2
         date: 2026-06
         note: Open-weight MoE of about 753B total parameters, MIT license
