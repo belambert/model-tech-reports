@@ -206,7 +206,10 @@ for (const [value, label] of [["", "All"], ...Object.entries(CATEGORY_LABELS)]) 
   a.textContent = label;
   $("cats").append(a);
 }
-if (PAGE) $("category-field").remove(); // the whole page is one category
+if (PAGE) { // the whole page is one category
+  $("category-field").remove();
+  document.querySelector("th[data-key=category]").remove();
+}
 
 const key = (r) => `${r.source}|${r.name}|${r.date}`;
 const searchText = new Map(releases.map((r) => [r, [
@@ -318,11 +321,11 @@ function render() {
           extras ? el("span", { class: "more" }, ` +${extras}`) : null)),
       el("td", {}, r.company),
       el("td", {}, r.family),
-      el("td", {}, CATEGORY_LABELS[r.category]),
+      PAGE ? null : el("td", {}, CATEGORY_LABELS[r.category]),
       el("td", {}, el("span", { class: "tag " + r.openness }, r.openness))));
-    if (open) body.append(el("tr", { class: "detail-row" }, el("td", {}), el("td", { colspan: "5" }, details(r))));
+    if (open) body.append(el("tr", { class: "detail-row" }, el("td", {}), el("td", { colspan: PAGE ? "4" : "5" }, details(r))));
   }
-  if (!rows.length) body.append(el("tr", {}, el("td", { colspan: "6", class: "empty" }, "No releases match these filters.")));
+  if (!rows.length) body.append(el("tr", {}, el("td", { colspan: PAGE ? "5" : "6", class: "empty" }, "No releases match these filters.")));
   const nw = rows.reduce((n, r) => n + r.writeups.length, 0);
   $("status").textContent = `Showing ${rows.length} of ${releases.length} releases (${nw} write-ups)`;
 }
