@@ -5,7 +5,8 @@ Each data/<company>.yaml file lists a company's model families and their
 releases. The script validates every file, then writes:
 
     <out>/reports.json   all releases as JSON
-    <out>/index.html     site/index.html with the releases embedded
+    <out>/index.html     all releases embedded
+    <out>/<cat>.html     one page per category (llm.html, vla.html, ...)
 
 Openness and category are inherited: release > family > company.
 
@@ -27,6 +28,8 @@ ROOT = Path(__file__).resolve().parent.parent
 DATA_DIR = ROOT / "data"
 TEMPLATE = ROOT / "site" / "index.html"
 DATA_PLACEHOLDER = "/*__REPORTS_DATA__*/null"
+PAGE_PLACEHOLDER = "/*__PAGE__*/null"
+TITLE_TAG = "<title>Model Tech Reports</title>"
 
 CATEGORIES = {
     "llm": "LLMs and VLMs",
@@ -216,19 +219,30 @@ def main():
     (out / "reports.json").write_text(json.dumps(data, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
 
     template = TEMPLATE.read_text(encoding="utf-8")
-    if DATA_PLACEHOLDER not in template:
-        print(f"{TEMPLATE}: missing data placeholder {DATA_PLACEHOLDER}", file=sys.stderr)
-        return 1
+    for token in (DATA_PLACEHOLDER, PAGE_PLACEHOLDER, TITLE_TAG):
+        if token not in template:
+            print(f"{TEMPLATE}: missing placeholder {token}", file=sys.stderr)
+            return 1
     # Escape "</" so titles can't close the <script> tag.
     embedded = json.dumps(data, ensure_ascii=False).replace("</", "<\\/")
-    (out / "index.html").write_text(template.replace(DATA_PLACEHOLDER, embedded), encoding="utf-8")
+
+    def write_page(page, name):
+        html = template.replace(DATA_PLACEHOLDER, embedded)
+        html = html.replace(PAGE_PLACEHOLDER, json.dumps(page))
+        if page:
+            html = html.replace(TITLE_TAG, f"<title>{CATEGORIES[page]} · Model Tech Reports</title>")
+        (out / name).write_text(html, encoding="utf-8")
+
+    write_page(None, "index.html")
+    for cat in CATEGORIES:
+        write_page(cat, f"{cat}.html")
 
     counts = {}
     for r in releases:
         counts[r["openness"]] = counts.get(r["openness"], 0) + 1
     summary = ", ".join(f"{n} {k}" for k, n in sorted(counts.items()))
     n_writeups = sum(len(r["writeups"]) for r in releases)
-    print(f"Wrote {len(releases)} releases, {n_writeups} write-ups ({summary}) to {out}/")
+    print(f"Wrote {len(releases)} releases, {n_writeups} write-ups ({summary}) to {1 + len(CATEGORIES)} pages in {out}/")
     return 0
 
 
