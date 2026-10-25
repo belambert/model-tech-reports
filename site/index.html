@@ -32,6 +32,13 @@
   header h1 { font-size: 24px; margin: 0 0 4px; letter-spacing: -0.01em; }
   header p { margin: 0; color: var(--muted); }
   header a { color: var(--accent); }
+  .cats { display: flex; flex-wrap: wrap; gap: 6px; margin: 20px 0 0; }
+  .cats a {
+    font-size: 13px; color: var(--muted); text-decoration: none;
+    border: 1px solid var(--border); border-radius: 999px; padding: 4px 12px;
+  }
+  .cats a:hover { color: var(--accent); border-color: var(--accent); }
+  .cats a[aria-current=page] { background: var(--accent); border-color: var(--accent); color: var(--surface); }
 
   .filters {
     display: flex; flex-wrap: wrap; gap: 12px 16px; align-items: end;
@@ -122,6 +129,8 @@
       Data lives in <a href="https://github.com/belambert/model-tech-reports">model-tech-reports</a>.</p>
   </header>
 
+  <nav class="cats" id="cats" aria-label="Categories"></nav>
+
   <form class="filters" id="filters" onsubmit="return false">
     <label class="field grow"><span>Search</span>
       <input type="search" id="q" placeholder="Model, title, company, author…" autocomplete="off">
@@ -134,7 +143,7 @@
         <button type="button" data-v="unknown">Unknown</button>
       </div>
     </div>
-    <label class="field"><span>Category</span><select id="category"></select></label>
+    <label class="field" id="category-field"><span>Category</span><select id="category"></select></label>
     <label class="field"><span>Company</span><select id="company"></select></label>
     <label class="field"><span>Write-up</span><select id="kind"></select></label>
     <div class="field"><span>Date</span>
@@ -165,7 +174,8 @@
 
 <script>
 const DATA = /*__REPORTS_DATA__*/null;
-const releases = DATA.releases;
+const PAGE = /*__PAGE__*/null; // category key on a per-category page, null on index
+const releases = PAGE ? DATA.releases.filter((r) => r.category === PAGE) : DATA.releases;
 const CATEGORY_LABELS = DATA.categories;
 const KIND_LABELS = { report: "Report", blog: "Blog", "model-card": "Model card", docs: "Docs" };
 
@@ -188,6 +198,16 @@ fillSelect($("kind"), Object.entries(KIND_LABELS), "Any");
 fillSelect($("from"), pairs(years), "Any");
 fillSelect($("to"), pairs(years), "Any");
 
+// Category tabs: "All" plus one page per category; the current page is not a link.
+for (const [value, label] of [["", "All"], ...Object.entries(CATEGORY_LABELS)]) {
+  const a = document.createElement("a");
+  if ((PAGE || "") === value) a.setAttribute("aria-current", "page");
+  else a.href = value ? `./${value}.html` : "./";
+  a.textContent = label;
+  $("cats").append(a);
+}
+if (PAGE) $("category-field").remove(); // the whole page is one category
+
 const key = (r) => `${r.source}|${r.name}|${r.date}`;
 const searchText = new Map(releases.map((r) => [r, [
   r.name, r.company, r.family, CATEGORY_LABELS[r.category], r.note,
@@ -200,6 +220,7 @@ const searchText = new Map(releases.map((r) => [r, [
 function readUrl() {
   const p = new URLSearchParams(location.search);
   for (const k of Object.keys(DEFAULTS)) {
+    if (PAGE && k === "category") continue; // fixed by the current page
     if (!p.has(k)) continue;
     state[k] = typeof DEFAULTS[k] === "boolean" ? p.get(k) === "1" : p.get(k);
   }
@@ -214,7 +235,10 @@ function writeUrl() {
 }
 
 function syncControls() {
-  for (const id of ["q", "category", "company", "kind", "from", "to"]) $(id).value = state[id];
+  for (const id of ["q", "category", "company", "kind", "from", "to"]) {
+    const c = $(id);
+    if (c) c.value = state[id];
+  }
   $("hasWeights").checked = state.hasWeights;
   for (const b of $("openness").querySelectorAll("button")) {
     b.setAttribute("aria-pressed", String(b.dataset.v === state.openness));
@@ -306,7 +330,8 @@ function render() {
 // Wire up controls.
 $("q").addEventListener("input", (ev) => { state.q = ev.target.value.trim(); render(); });
 for (const id of ["category", "company", "kind", "from", "to"]) {
-  $(id).addEventListener("change", (ev) => { state[id] = ev.target.value; render(); });
+  const c = $(id);
+  if (c) c.addEventListener("change", (ev) => { state[id] = ev.target.value; render(); });
 }
 $("hasWeights").addEventListener("change", (ev) => { state.hasWeights = ev.target.checked; render(); });
 $("openness").addEventListener("click", (ev) => {

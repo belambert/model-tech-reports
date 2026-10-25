@@ -6,6 +6,9 @@ covers the earlier foundational reports from the closed frontier labs.
 
 **[Browse all releases in a sortable, filterable table →](https://belambert.github.io/model-tech-reports/)**
 
+Or jump straight to a category:\
+[LLMs and VLMs](https://belambert.github.io/model-tech-reports/llm.html) · [VLAs](https://belambert.github.io/model-tech-reports/vla.html) · [World Models](https://belambert.github.io/model-tech-reports/world-model.html) · [Image and Video](https://belambert.github.io/model-tech-reports/image-video.html) · [Speech and Audio](https://belambert.github.io/model-tech-reports/speech.html)
+
 ## Scope
 
 - **Included:** Generative language models (base, chat, reasoning, code,
@@ -60,7 +63,8 @@ Conventions:
 
 ## Building
 
-`scripts/build_site.py` validates the data and builds `_site/index.html` and
+`scripts/build_site.py` validates the data and builds `_site/index.html` (all
+releases), one `_site/<category>.html` page per category, and
 `_site/reports.json`. CI runs it on every push and pull request, fails on
 invalid data, and deploys `main` to GitHub Pages. To build locally:
 
