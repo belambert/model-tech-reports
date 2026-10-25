@@ -75,14 +75,12 @@ invalid data, and deploys `main` to GitHub Pages. To build locally:
 
 - [ ] Audit each company's data file for missing releases, dead or wrong
   links, and stale openness values.
-- [ ] Add Reflection AI's Beam (501B-A23B, announced 2026-10-05) once the
-  weights and a technical report or model card are published.
+- [ ] Link the Reflection Beam technical report once Reflection publishes it
+      (the weights and model card are out; announced with Beam 1.0, 2026-10).
 - [ ] Link the Mistral Large 4 weights once Mistral releases them (announced
   for the end of October 2026).
-- [ ] Add GLM-5.1 (2026-04), which has weights on Hugging Face but no
-  release entry.
 - [ ] Check whether Kimi k1.5 and Nemotron-4 15B are really open; no public
-  weights were found.
+      weights were found.
 - [ ] Find weights, if any exist, for Qwen-VLA, Qwen-RobotManip, π0.7, and
   GLM-5V-Turbo, and add notes.
 - [ ] Re-check Qwen3.5-Omni (marked closed) and Qwen-Audio-3.0-ASR (marked

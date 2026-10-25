@@ -72,6 +72,20 @@ families:
           - kind: blog
             title: "Qwen3.5: Towards Native Multimodal Agents"
             url: https://qwen.ai/blog?id=qwen3.5
+      - name: Qwen3.8
+        date: 2026-08
+        note: Open-weight generation led by the 2.4T-A95B flagship MoE (the first Max-class Qwen open release), plus a 27B dense model and Flash-Next, an architecture preview for Qwen4; qwen3.8-max and qwen3.8-flash remain API-only
+        weights:
+          - https://huggingface.co/Qwen/Qwen3.8-2.4T-A95B
+          - https://huggingface.co/Qwen/Qwen3.8-27B
+          - https://huggingface.co/Qwen/Qwen3.8-Flash-Next
+        writeups:
+          - kind: model-card
+            title: Qwen3.8-2.4T-A95B
+            url: https://huggingface.co/Qwen/Qwen3.8-2.4T-A95B
+          - kind: model-card
+            title: Qwen3.8-Flash-Next
+            url: https://huggingface.co/Qwen/Qwen3.8-Flash-Next
 
   - name: Qwen Code and Math
     category: llm
